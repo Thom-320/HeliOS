@@ -33,8 +33,6 @@ HeliOS no es solo una demo visual: implementa un kernel educativo completo y ver
 - **Memoria dinámica**: free-list allocator con coalescing, no solo bump allocation.
 - **Repo defendible**: CI compila el kernel y lo bootea en QEMU con un smoke test automatizado.
 
-Ver comparación técnica: [docs/COMPARISON.md](docs/COMPARISON.md).
-
 ## 🚀 Inicio Rápido
 
 ### Prerequisitos
@@ -134,7 +132,6 @@ make dtb        # Extrae device tree
 
 - **[README_RAPIDO.md](README_RAPIDO.md)** - Referencia rápida
 - **[docs/README.md](docs/README.md)** - Documentación técnica
-- **[docs/COMPARISON.md](docs/COMPARISON.md)** - Comparación técnica y ventajas
 - **[docs/visualization.html](docs/visualization.html)** - Visualización web
 
 ## 🎓 Ejemplo de Uso
