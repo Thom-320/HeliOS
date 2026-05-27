@@ -13,7 +13,7 @@
 | 5 | Implement `lib/printf.c` with kprintf supporting %s %d %u %x | ✅ **COMPLETO** | kprintf con %s, %d, %u, %x, %c |
 | 6 | Implement `drivers/timer.c` with SBI calls and 100Hz tick scheduling | ✅ **COMPLETO** | SBI calls, rdtime(), timer_init(), 100Hz config |
 | 7 | Implement `kernel/trap.c` with stvec setup, SIE/STIE enable, and timer interrupt handler | ✅ **COMPLETO** | trap_init(), stvec, SIE/STIE, trap_handler |
-| 8 | Implement `kernel/task.c` with bump allocator, task_create, yield, exit | ✅ **COMPLETO** | kmalloc, task_create, task_exit, task_yield, idle_task |
+| 8 | Implement `kernel/task.c` with allocator, task_create, yield, exit | ✅ **COMPLETO** | kmalloc, task_create, task_exit, task_yield, idle_task |
 | 9 | Implement `kernel/sched.c` with RR preemptive and SJF non-preemptive modes | ✅ **COMPLETO** | RR cooperativo, SJF base, sched_set_mode |
 | 10 | Implement `kernel/shell.c` with all commands including bench | ✅ **COMPLETO** | 10 comandos, bench implementado |
 | 11 | Implement `kernel/kmain.c` with initialization sequence and banner | ✅ **COMPLETO** | Secuencia init, banner correcto |
@@ -199,7 +199,7 @@
 
 **Implementación:**
 ```c
-✅ kmalloc() con bump allocator (256KB heap)
+✅ kmalloc() con free-list allocator (256KB heap)
 ✅ Task table de 32 tareas
 ✅ task_create() con PID, stack (4KB), context setup
 ✅ task_exit() marca ZOMBIE
@@ -348,7 +348,7 @@
    - **Realidad:** RR cooperativo con need_resched
    - **Razón:** Estabilidad para demo
 
-2. **Timer deshabilitado**
+2. **Timer habilitado en la versión actual**
    - **Plan:** Timer activo a 100 Hz
    - **Realidad:** Timer implementado pero comentado en kmain
    - **Razón:** Evitar problemas de context switch en IRQ
@@ -380,7 +380,7 @@
 
 Las diferencias (5%) son **decisiones de diseño** para mejorar la estabilidad:
 - Scheduler cooperativo en lugar de preemptivo
-- Timer deshabilitado temporalmente
+- Timer habilitado en la versión actual
 - Sistema igualmente funcional y demostrable
 
 ### 🎯 Estado Actual
@@ -422,4 +422,3 @@ Implementaciones adicionales no requeridas en el plan:
 **🎉 PROYECTO COMPLETADO EXITOSAMENTE**
 
 El plan se cumplió al 95% con mejoras significativas en estabilidad y documentación.
-

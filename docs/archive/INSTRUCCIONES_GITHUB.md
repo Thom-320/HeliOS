@@ -30,7 +30,7 @@ git commit -m "uROS: Mini OS educativo RISC-V 64
 - Sistema de tareas con context switching
 - Scheduler Round-Robin cooperativo
 - Driver UART NS16550A
-- Gestión de memoria con bump allocator
+- Gestión de memoria con free-list allocator
 - Printf implementado
 - Demo automática lista
 
@@ -68,17 +68,13 @@ git push -u origin main
 
 ---
 
-## 👥 Paso 3: Agregar Colaboradores
+## 👤 Paso 3: Verificar Autoría
 
 ### Opción A: En la Web
 
 1. Ve a tu repo en GitHub
 2. Settings → Collaborators
-3. Add people
-4. Busca y agrega:
-   - **Simón** (usuario de GitHub)
-   - **María Paula** (usuario de GitHub)
-5. Permisos: **Write**
+3. Confirma que solo `Thom-320` tenga permisos de administración/escritura
 
 ### Opción B: Con GitHub CLI
 
@@ -108,12 +104,8 @@ gh repo collab add mariapaulaUsername --permission push
 ### Ramas por Persona
 
 ```bash
-# Thomas
+# Rama principal de trabajo
 git checkout -b thomas/scheduler-bench
-# Simón
-git checkout -b simon/traps-timer
-# María Paula
-git checkout -b mariapaula/shell-uart
 ```
 
 ### Workflow Recomendado
@@ -195,7 +187,7 @@ Crear target en Makefile que ejecute la demo automáticamente sin timeout.
 
 Comando: `make demo-fast`
 
-Responsable: María Paula
+Responsable: Thomas
 ```
 
 ### Issue 2: [doc] Screenshot/gif de la shell
@@ -242,7 +234,7 @@ Documentar en docs/README.md:
 - Breakpoints comunes
 - Ejemplos de debugging
 
-Responsable: Simón
+Responsable: Thomas
 ```
 
 ### Issue 6: [feature] Comando uptime mejorado
@@ -253,7 +245,7 @@ Agregar `uptime -v` que muestre:
 - Modo scheduler actual
 - Número de context switches
 
-Responsable: María Paula
+Responsable: Thomas
 ```
 
 ---
@@ -352,4 +344,3 @@ echo "✅ ¡Repo creado exitosamente!"
 ---
 
 **¡Cuando estés listo, ejecuta estos comandos y tendrás tu proyecto en GitHub!** 🎉
-

@@ -107,11 +107,9 @@ git commit -m "uROS: Mini OS educativo RISC-V 64"
 
 ---
 
-## 🎓 Colaboradores
+## 🎓 Autor
 
 - **Thomas** - Scheduler & Benchmark
-- **Simón** - Traps & Timer  
-- **María Paula** - Shell & UART & Build
 
 ---
 
@@ -124,4 +122,3 @@ git commit -m "uROS: Mini OS educativo RISC-V 64"
 **Ejecuta:** `./scripts/demo.sh`
 
 **¡Eso es todo!** 🎉
-

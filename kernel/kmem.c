@@ -1,7 +1,7 @@
 #include "uros.h"
 
 // Free-list memory allocator with coalescing
-// Replaces simple bump allocator for better memory reuse
+// Free-list allocator for memory reuse
 
 typedef struct mem_header {
     size_t size;              // Size of this block (excluding header)
@@ -157,4 +157,3 @@ int kmalloc_free_blocks(void) {
     
     return count;
 }
-

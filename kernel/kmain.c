@@ -10,7 +10,7 @@ void kmain(void) {
   kprintf(" |  _  |  __/ | | |_| |___) |\n");
   kprintf(" |_| |_|\\___|_|_|\\___/|____/ \n");
   kprintf("                             \n");
-  kprintf(" HeliOS v1.0 - RISC-V 64-bit \n");
+  kprintf(" uROS v1.0 - RISC-V 64-bit \n");
   kprintf("--------------------------------------------------\n");
 
   kprintf("Initializing task system...\n");

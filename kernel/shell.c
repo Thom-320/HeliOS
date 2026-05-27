@@ -483,7 +483,7 @@ void shell_run(void) {
   while (1) {
     sched_maybe_yield_safe();
 
-    kprintf("HeliOS> ");
+    kprintf("uROS> ");
     uart_gets(buf, 64);
 
     // Trim newline

@@ -25,3 +25,5 @@ jobs:
           fi
           echo "✅ Build successful!"
 
+      - name: Boot smoke test
+        run: make smoke

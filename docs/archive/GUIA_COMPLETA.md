@@ -331,7 +331,7 @@ which qemu-system-riscv64
 - Context switching
 
 ### ⚠️ Limitaciones (Por Diseño)
-- **Timer deshabilitado**: Para estabilidad del sistema
+- **Timer habilitado**: El sistema actual usa el timer SBI para ticks, uptime y scheduling.
 - **Interrupts deshabilitados**: Sistema cooperativo
 - **uptime reporta 0**: Sin timer activo
 - **bench no funcional**: Requiere timer para mediciones
@@ -418,4 +418,3 @@ make run
 ```
 
 **¡Disfruta explorando uROS!** 🎉
-

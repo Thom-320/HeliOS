@@ -4,8 +4,12 @@
 
 uROS es un mini sistema operativo para RISC-V 64 que corre en QEMU con:
 - ✅ Shell interactiva
-- ✅ Scheduler Round-Robin
+- ✅ Scheduler Round-Robin cooperativo/preemptivo
+- ✅ Scheduler SJF
 - ✅ Sistema de tareas/threads
+- ✅ Timer, traps e interrupciones
+- ✅ Semáforos, mutexes y demo productor-consumidor
+- ✅ Free-list allocator
 - ✅ Comandos de gestión
 
 ## Inicio Rápido (3 pasos)
@@ -29,7 +33,10 @@ run cpu
 run io
 ps
 sched rr
+sched preempt on
+uptime
 meminfo
+intstats
 ```
 
 **Para salir**: Presiona `Ctrl+C`
@@ -50,20 +57,21 @@ meminfo
 | `run io` | Crea tarea I/O-bound |
 | `kill <pid>` | Termina una tarea |
 | `sched rr` | Cambia a Round-Robin |
-| `sched sjf` | Cambia a SJF (requiere timer) |
-| `bench` | Ejecuta benchmark (requiere timer) |
+| `sched sjf` | Cambia a SJF |
+| `sched preempt on|off` | Activa/desactiva preemption por timer |
+| `sleep <ticks>` | Espera N ticks |
+| `pcdemo` | Demo productor-consumidor |
+| `bench` | Ejecuta benchmark |
 | `uptime` | Tiempo de ejecución |
 | `meminfo` | Uso de memoria |
+| `intstats` | Estado de interrupciones/timer |
 
 ## Verificación
 
 Para verificar que todo funciona:
 ```bash
-# Test rápido
-echo "help" | timeout 5 ./scripts/run-qemu.sh
-
-# Test completo
-echo -e "help\nps\nrun cpu\nrun io\nps\nmeminfo" | timeout 10 ./scripts/run-qemu.sh
+# Smoke test automatizado
+make smoke
 ```
 
 ## Estado del Proyecto
@@ -75,14 +83,17 @@ echo -e "help\nps\nrun cpu\nrun io\nps\nmeminfo" | timeout 10 ./scripts/run-qemu
 - Printf
 - Shell interactiva
 - Tareas/threads
-- Scheduler Round-Robin cooperativo
-- Todos los comandos básicos
+- Scheduler Round-Robin cooperativo/preemptivo
+- Scheduler SJF
+- Timer SBI a 100 Hz
+- Semáforos y mutexes
+- Free-list allocator
+- Todos los comandos básicos y demos
 
 **Limitaciones actuales:**
-- Timer deshabilitado por estabilidad
-- `uptime` reporta 0
-- `bench` no puede medir tiempos sin timer
-- `sched sjf` no funcional sin timer
+- Sin MMU/paging
+- Sin sistema de archivos
+- Todo corre en S-mode/kernel mode
 
 ## Archivos Importantes
 
@@ -111,4 +122,3 @@ Ver documentación completa en:
 ---
 
 **¡Listo para usar!** 🎉
-

@@ -12,10 +12,12 @@
 - ✅ **QEMU virt** con OpenSBI
 - ✅ **Shell interactiva** con 10+ comandos
 - ✅ **Sistema de tareas** con context switching
-- ✅ **Scheduler Round-Robin** cooperativo
+- ✅ **Scheduler Round-Robin** cooperativo o preemptivo
+- ✅ **Scheduler SJF** con estimación de ráfagas
 - ✅ **Driver UART** NS16550A
 - ✅ **Printf** implementado
-- ✅ **Gestión de memoria** con bump allocator
+- ✅ **Gestión de memoria** con free-list allocator
+- ✅ **Smoke test en QEMU** para CI
 
 ## 🚀 Inicio Rápido
 
@@ -44,7 +46,10 @@ ps
 run cpu
 run io
 ps
+sched preempt on
+uptime
 meminfo
+intstats
 ```
 
 **Para salir:** `Ctrl+C`
@@ -59,17 +64,22 @@ Ejecuta automáticamente: `help` → `ps` → `run cpu` → `run io` → `ps` �
 
 ## 📋 Comandos Disponibles
 
-| Comando      | Descripción                |
-| ------------ | -------------------------- |
-| `help`       | Lista todos los comandos   |
-| `ps`         | Muestra tareas activas     |
-| `run cpu`    | Crea tarea CPU-bound       |
-| `run io`     | Crea tarea I/O-bound       |
-| `kill <pid>` | Termina una tarea          |
-| `sched rr`   | Scheduler Round-Robin      |
-| `bench`      | Benchmark (requiere timer) |
-| `uptime`     | Tiempo de ejecución        |
-| `meminfo`    | Uso de memoria             |
+| Comando                 | Descripción                         |
+| ----------------------- | ----------------------------------- |
+| `help`                  | Lista todos los comandos            |
+| `ps`                    | Muestra tareas activas              |
+| `run cpu`               | Crea tarea CPU-bound                |
+| `run io`                | Crea tarea I/O-bound                |
+| `kill <pid>`            | Termina una tarea                   |
+| `sched rr`              | Scheduler Round-Robin               |
+| `sched sjf`             | Scheduler Shortest Job First        |
+| `sched preempt on|off`  | Activa/desactiva preemption por timer |
+| `sleep <ticks>`         | Espera N ticks                      |
+| `pcdemo`                | Demo productor-consumidor           |
+| `bench`                 | Benchmark de scheduling             |
+| `uptime`                | Tiempo de ejecución                 |
+| `meminfo`               | Uso de memoria                      |
+| `intstats`              | Estado de timer/interrupciones      |
 
 ## 📁 Estructura
 
@@ -97,16 +107,16 @@ make            # Compila el proyecto
 make run        # Ejecuta en QEMU
 make run-gdb    # Ejecuta con debugger
 make gdb        # Conecta GDB
+make smoke      # Compila y ejecuta smoke test en QEMU
 make clean      # Limpia build/
 make dtb        # Extrae device tree
 ```
 
 ## 📖 Documentación
 
-- **[GUIA_COMPLETA.md](GUIA_COMPLETA.md)** - Guía detallada con ejemplos
 - **[README_RAPIDO.md](README_RAPIDO.md)** - Referencia rápida
-- **[VERIFICATION.md](VERIFICATION.md)** - Verificación técnica
 - **[docs/README.md](docs/README.md)** - Documentación técnica
+- **[docs/visualization.html](docs/visualization.html)** - Visualización web
 
 ## 🎓 Ejemplo de Uso
 
@@ -162,9 +172,9 @@ make gdb
 - **Boot**: OpenSBI (-bios default)
 - **Mode**: S-mode bare metal
 - **UART**: 0x10000000 (NS16550A)
-- **Scheduler**: Round-Robin cooperativo (sin timer por estabilidad)
-- **Memory**: Bump allocator, 256KB heap
-- **Tasks**: Max 32, 4KB stack cada una
+- **Scheduler**: Round-Robin cooperativo/preemptivo y SJF
+- **Memory**: Free-list allocator con coalescing, 256KB heap
+- **Tasks**: Max 32, 8KB stack cada una
 
 ## ✅ Estado del Proyecto
 
@@ -178,6 +188,7 @@ make gdb
 - ✅ UART input/output
 - ✅ Gestión de memoria
 - ✅ Visualización Web (ver `docs/visualization.html`)
+- ✅ Smoke test automatizado en QEMU
 
 **Limitaciones actuales (por diseño):**
 
@@ -185,11 +196,9 @@ make gdb
 - Sin sistema de archivos (todo en RAM)
 - Modo Supervisor único (sin separación User/Kernel estricta)
 
-## 🤝 Colaboradores
+## 👤 Autor
 
 - **Thomas** 
-- **Simón** 
-- **María Paula** 
 
 ## 📝 Licencia
 
@@ -199,4 +208,4 @@ MIT License - ver archivo LICENSE
 
 **🚀 ¡Listo para demostración y evaluación!**
 
-Para más detalles, consulta [GUIA_COMPLETA.md](GUIA_COMPLETA.md)
+Para más detalles, consulta [docs/README.md](docs/README.md)

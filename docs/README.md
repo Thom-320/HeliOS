@@ -51,6 +51,9 @@ make run
 # Clean build artifacts
 make clean
 
+# Boot and exercise the shell in QEMU
+make smoke
+
 # Dump device tree blob (for debugging)
 make dtb
 ```
@@ -68,9 +71,13 @@ Once booted, the system presents an interactive shell prompt: `uROS>`
 - **kill \<pid\>** - Terminate task with given PID
 - **sched rr** - Switch to Round-Robin scheduler
 - **sched sjf** - Switch to Shortest Job First scheduler
+- **sched preempt on|off** - Enable or disable timer-driven RR preemption
+- **sleep \<ticks\>** - Sleep for a number of timer ticks
+- **pcdemo** - Run the producer-consumer synchronization demo
 - **bench** - Run scheduling benchmark and compare RR vs SJF
 - **uptime** - Display system uptime in seconds and ticks
 - **meminfo** - Show kernel heap memory usage
+- **intstats** - Show timer/interrupt CSR state
 
 ## Scheduling Algorithms
 
@@ -350,7 +357,7 @@ Uptime: 32.45 seconds (3245 ticks)
 - **Base Address**: 0x80200000
 - **Kernel Stack**: 16 KB
 - **Task Stacks**: 8 KB each (up to 32 tasks)
-- **Heap**: 256 KB (bump allocator)
+- **Heap**: 256 KB (free-list allocator with coalescing)
 
 ### Context Switching
 
@@ -396,7 +403,6 @@ uROS/
 
 - No MMU/paging (bare metal S-mode)
 - No user mode (all tasks run in kernel mode)
-- Simple bump allocator (no free/realloc)
 - No file system or persistent storage
 - Single CPU core only
 
@@ -404,17 +410,20 @@ uROS/
 
 - Add user mode with syscalls
 - Implement basic paging/virtual memory
-- Add process synchronization primitives (semaphores, mutexes)
 - Multi-level feedback queue scheduling
 - Real I/O device drivers (block devices, network)
+- Add realloc and allocator stress tests
+
+## Verification
+
+CI builds the kernel and runs `scripts/smoke.sh`, which boots QEMU headless,
+sends a small shell command sequence, and checks for expected output. This keeps
+the repository demonstrable instead of only compile-clean.
 
 ## License
 
 Educational project for OS course.
 
-## Authors
+## Author
 
-- Simón - Núcleo (Bootstrap & traps)
-- María Paula - Drivers/Sistema (UART, shell, build)
-- Thomas - Planificación (RR/SJF + métricas)
-
+- Thomas

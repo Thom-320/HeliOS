@@ -22,7 +22,7 @@ OBJ_S = $(patsubst %.S,build/%.o,$(SRC_S))
 OBJ = $(OBJ_C) $(OBJ_S)
 
 # Targets
-.PHONY: all run clean dtb
+.PHONY: all run smoke clean dtb
 
 all: build/kernel.elf
 
@@ -41,6 +41,9 @@ build/%.o: %.S
 run: build/kernel.elf
 	@bash scripts/run-qemu.sh
 
+smoke: build/kernel.elf
+	@bash scripts/smoke.sh
+
 clean:
 	rm -rf build/
 
@@ -48,4 +51,3 @@ dtb:
 	qemu-system-riscv64 -machine virt,dumpdtb=virt.dtb -nographic -bios default
 	dtc -I dtb -O dts virt.dtb -o virt.dts
 	@echo "DTB dumped to virt.dtb and virt.dts"
-
