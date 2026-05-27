@@ -2,7 +2,7 @@
 
 ## 🎯 Problema Identificado
 
-**Síntoma:** Sistema bootea, muestra prompt `uROS>` pero NO acepta entrada del teclado.
+**Síntoma:** Sistema bootea, muestra prompt `HeliOS>` pero NO acepta entrada del teclado.
 
 **Causa Raíz Encontrada:**
 
@@ -170,7 +170,7 @@ make clean && make -j
 
 **Esperado:**
 ```
-uROS (rv64gc, QEMU virt) - console ready
+HeliOS (rv64gc, QEMU virt) - console ready
 ticks=0
 UART selftest: type one char:
 ```
@@ -186,7 +186,7 @@ Initializing scheduler...
 Initializing trap handling...
 Initializing timer...
 System initialized, starting shell...
-uROS>
+HeliOS>
 ```
 
 **AHORA:** Escribe `uptime` y Enter
@@ -232,7 +232,7 @@ Consumer: consumed item 1 from index 0
 
 - [ ] ✅ Compila sin errores
 - [ ] ✅ UART selftest acepta un carácter
-- [ ] ✅ Shell muestra prompt `uROS>`
+- [ ] ✅ Shell muestra prompt `HeliOS>`
 - [ ] ✅ Comandos responden (`help`, `ps`)
 - [ ] ✅ `uptime` muestra ticks > 0
 - [ ] ✅ Ticks aumentan con el tiempo
@@ -315,7 +315,7 @@ $ make run
 
 [OpenSBI boot...]
 
-uROS (rv64gc, QEMU virt) - console ready
+HeliOS (rv64gc, QEMU virt) - console ready
 ticks=0
 UART selftest: type one char: h [got 0x68='h']
 Initializing task system...
@@ -324,20 +324,20 @@ Initializing scheduler...
 Initializing trap handling...
 Initializing timer...
 System initialized, starting shell...
-uROS> uptime
+HeliOS> uptime
 Uptime: 0.15 seconds (15 ticks)
-uROS> uptime
+HeliOS> uptime
 Uptime: 2.47 seconds (247 ticks)
-uROS> intstats
+HeliOS> intstats
 ticks=312  timer_irqs=312  deadline=0x...  now=0x...
 sstatus=0x...  sie=0x20  sip=0x...
 preempt=ON
-uROS> pcdemo
+HeliOS> pcdemo
 === Producer-Consumer Demo ===
 Producer: produced item 1 at index 0
 Consumer: consumed item 1 from index 0
 [...]
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    850    1          0
 1    ZOMBIE   120    20         500

@@ -1,6 +1,8 @@
-# uROS - Mini OS en RISC-V 64
+# HeliOS - Mini OS en RISC-V 64
 
 > Un sistema operativo educativo minimalista para RISC-V 64 corriendo en QEMU
+>
+> El nombre combina **Helium Browser** + **OS**: **HeliOS**.
 
 [![RISC-V](https://img.shields.io/badge/RISC--V-64-blue)](https://riscv.org/)
 [![QEMU](https://img.shields.io/badge/QEMU-virt-orange)](https://www.qemu.org/)
@@ -40,7 +42,7 @@ make clean && make -j
 # 2. Ejecutar
 make run
 
-# 3. En el prompt uROS>, prueba:
+# 3. En el prompt HeliOS>, prueba:
 help
 ps
 run cpu
@@ -96,7 +98,7 @@ mini-os/
 │   ├── uart.c           # NS16550A
 │   └── timer.c          # Timer SBI
 ├── lib/printf.c         # Printf
-├── include/uros.h       # Headers
+├── include/helios.h       # Headers
 └── scripts/             # Scripts útiles
 ```
 
@@ -126,28 +128,28 @@ $ make run
 OpenSBI v1.5.1
 [Boot info...]
 
-uROS (rv64gc, QEMU virt) - console ready
+HeliOS (rv64gc, QEMU virt) - console ready
 ticks=0
 Initializing task system...
 Initializing scheduler...
 Creating idle task...
 System initialized, starting shell...
 
-uROS> help
+HeliOS> help
 Available commands:
   help          - Show this help
   ps            - List tasks
   run cpu       - Create CPU-bound task
   ...
 
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    0      1          0
 
-uROS> run cpu
+HeliOS> run cpu
 Created CPU task with PID 1
 
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    0      1          0
 1    READY    0      20          0

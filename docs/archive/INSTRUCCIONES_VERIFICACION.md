@@ -28,7 +28,7 @@ make run
 
 **Esperado:** Verás el banner de OpenSBI y luego:
 ```
-uROS (rv64gc, QEMU virt) - console ready
+HeliOS (rv64gc, QEMU virt) - console ready
 ticks=0
 Initializing task system...
 Initializing scheduler...
@@ -36,7 +36,7 @@ Creating idle task...
 Initializing timer...
 Initializing trap handling...
 System initialized, starting shell...
-uROS>
+HeliOS>
 ```
 
 ### Paso 5: AHORA - Con TU Teclado
@@ -121,7 +121,7 @@ Por favor, dame esta información:
 
 ### Cuando ejecutas `make run`:
 
-1. **¿Ves el prompt `uROS>`?**
+1. **¿Ves el prompt `HeliOS>`?**
    - [ ] Sí
    - [ ] No
 
@@ -178,7 +178,7 @@ Por favor, dame esta información:
 
 ### Escenario D: Sistema se cuelga
 ```
-❌ No llega a uROS>
+❌ No llega a HeliOS>
 ```
 → **Causa:** Problema en init
 → **Solución:** Verificar orden de init en kmain.c

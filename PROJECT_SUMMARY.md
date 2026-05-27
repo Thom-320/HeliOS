@@ -1,4 +1,4 @@
-# uROS - RISC-V Mini-OS Implementation Summary
+# HeliOS - RISC-V Mini-OS Implementation Summary
 
 ## Project Overview
 
@@ -10,7 +10,7 @@ All components have been implemented according to the specification.
 
 ## Components Delivered
 
-### 1. Core Infrastructure (`include/uros.h`)
+### 1. Core Infrastructure (`include/helios.h`)
 - Complete type definitions (u8, u16, u32, u64, size_t)
 - Context structure with all 31 GP registers + sstatus + sepc (272 bytes total)
 - PCB structure with scheduling metadata (burst estimation, arrival/finish times)
@@ -173,14 +173,14 @@ Offset  Register
 ## Build Status
 
 ✅ Compiles without errors
-✅ Links successfully  
+✅ Links successfully
 ✅ Generates 57KB ELF executable
 ✅ All required files created
 
 ## Files Created
 
 ### Source Files (14 total)
-- `include/uros.h` - Main header (180 lines)
+- `include/helios.h` - Main header (180 lines)
 - `linker.ld` - Linker script
 - `boot/start.S` - Boot assembly + context switch (105 lines)
 - `kernel/kmain.c` - Kernel entry
@@ -200,26 +200,26 @@ Offset  Register
 
 ## Definition of Done - Checklist
 
-✅ `make` compiles successfully  
-✅ `make run` boots to banner  
-✅ Prompt "uROS> " implemented  
-✅ `help` command lists all commands  
-✅ `run cpu` and `run io` create tasks  
-✅ `ps` shows task information  
-✅ `sched rr` and `sched sjf` switch modes  
-✅ `bench` compares RR vs SJF with metrics  
-✅ `uptime` shows system time  
-✅ `meminfo` shows memory usage  
-✅ `kill <pid>` terminates tasks  
-✅ Timer configured for 100 Hz  
-✅ Context switch preserves all registers  
-✅ SBI timer interface implemented  
-✅ UART TX/RX functional  
-✅ Round-Robin with 5-tick quantum  
-✅ SJF with exponential averaging  
-✅ Benchmark with 6 tasks and metrics  
-✅ README with full documentation  
-✅ All scripts executable  
+✅ `make` compiles successfully
+✅ `make run` boots to banner
+✅ Prompt "HeliOS> " implemented
+✅ `help` command lists all commands
+✅ `run cpu` and `run io` create tasks
+✅ `ps` shows task information
+✅ `sched rr` and `sched sjf` switch modes
+✅ `bench` compares RR vs SJF with metrics
+✅ `uptime` shows system time
+✅ `meminfo` shows memory usage
+✅ `kill <pid>` terminates tasks
+✅ Timer configured for 100 Hz
+✅ Context switch preserves all registers
+✅ SBI timer interface implemented
+✅ UART TX/RX functional
+✅ Round-Robin with 5-tick quantum
+✅ SJF with exponential averaging
+✅ Benchmark with 6 tasks and metrics
+✅ README with full documentation
+✅ All scripts executable
 
 ## Next Steps for Testing
 
@@ -249,7 +249,7 @@ Offset  Register
 
 ## Conclusion
 
-The uROS mini-OS is a complete, compilable implementation meeting all specified requirements. It demonstrates core OS concepts including:
+The HeliOS mini-OS is a complete, compilable implementation meeting all specified requirements. It demonstrates core OS concepts including:
 - Interrupt handling
 - Context switching
 - Process scheduling (RR & SJF)
@@ -260,8 +260,8 @@ The uROS mini-OS is a complete, compilable implementation meeting all specified 
 Ready for demonstration and further development.
 
 ---
-**Generated**: October 23, 2025  
-**Platform**: RISC-V 64 (rv64gc) / QEMU virt  
-**Build**: Successful  
+**Generated**: October 23, 2025
+**Platform**: RISC-V 64 (rv64gc) / QEMU virt
+**Build**: Successful
 **Status**: COMPLETE ✅
 

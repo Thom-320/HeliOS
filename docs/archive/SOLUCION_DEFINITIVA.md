@@ -2,7 +2,7 @@
 
 ## Problema Actual
 
-Shell muestra `uROS>` pero no acepta entrada cuando timer está activo.
+Shell muestra `HeliOS>` pero no acepta entrada cuando timer está activo.
 
 ## Causa Real
 

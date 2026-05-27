@@ -4,12 +4,12 @@
 
 **Codex reporta que el sistema FUNCIONA para él:**
 ```
-uROS> uptime
+HeliOS> uptime
 Uptime: 0.0 seconds (0 ticks)
-uROS> sleep 20
+HeliOS> sleep 20
 Sleeping for 20 ticks...
 Done sleeping
-uROS> uptime
+HeliOS> uptime
 Uptime: 0.20 seconds (20 ticks)
 ```
 
@@ -30,7 +30,7 @@ cd "/Users/thom/Library/Mobile Documents/com~apple~CloudDocs/Universidad/OS/mini
 ./test_directo.sh
 ```
 
-4. Cuando veas `uROS>`:
+4. Cuando veas `HeliOS>`:
    - **Haz clic** en la ventana para darle foco
    - **Escribe** `help` muy despacio
    - **Presiona** Enter
@@ -75,17 +75,17 @@ Si usas macOS Terminal, prueba con:
 
 Funcionando:
 ```
-uROS> help
+HeliOS> help
 Available commands:
 ...
-uROS> uptime
+HeliOS> uptime
 Uptime: 0.20 seconds
 ```
 
 ### Y Tú Ves Esto:
 
 ```
-uROS> [no acepta teclas]
+HeliOS> [no acepta teclas]
 ```
 
 **Entonces el problema es:**
@@ -155,7 +155,7 @@ make
 ./scripts/run-qemu.sh
 ```
 
-4. **Cuando veas `uROS>`:**
+4. **Cuando veas `HeliOS>`:**
    - Haz clic en la ventana
    - Presiona `h` `e` `l` `p` `Enter` MUY DESPACIO
    - Observa si ves ALGO

@@ -46,8 +46,8 @@ if [ "$status" -ne 0 ] && [ "$status" -ne 124 ]; then
 fi
 
 for expected in \
-  "uROS v1.0" \
-  "uROS> " \
+  "HeliOS v1.0" \
+  "HeliOS> " \
   "Available commands:" \
   "PID  STATE" \
   "Uptime:" \

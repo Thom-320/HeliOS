@@ -1,4 +1,4 @@
-# 🎉 uROS - PROYECTO COMPLETADO
+# 🎉 HeliOS - PROYECTO COMPLETADO
 
 ## ✅ SISTEMA 100% FUNCIONAL
 
@@ -63,7 +63,7 @@ intstats
 ## 🎯 LO QUE RESOLVIÓ CODEX
 
 ### Problema
-- Sistema mostraba `uROS>` pero no aceptaba entrada del teclado
+- Sistema mostraba `HeliOS>` pero no aceptaba entrada del teclado
 - uptime siempre daba 0
 - Timer no funcionaba
 
@@ -111,7 +111,7 @@ kernel/kmem.c             # Memory allocator
 drivers/uart.c            # NS16550A polling
 drivers/timer.c           # SBI timer (simplificado)
 lib/printf.c              # kprintf
-include/uros.h            # Headers
+include/helios.h            # Headers
 include/config.h          # CONFIG_PREEMPT
 Makefile                  # Build system
 linker.ld                 # Linker script
@@ -316,7 +316,7 @@ make run
 
 **¡EXCELENTE TRABAJO!** 🏆🚀
 
-**Tu proyecto uROS está LISTO y FUNCIONANDO.** ✅
+**Tu proyecto HeliOS está LISTO y FUNCIONANDO.** ✅
 
 ---
 

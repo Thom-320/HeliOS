@@ -1,5 +1,5 @@
 #include "config.h"
-#include "uros.h"
+#include "helios.h"
 
 volatile u64 g_ticks = 0;
 volatile int need_resched = 0;

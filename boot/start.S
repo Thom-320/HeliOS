@@ -17,7 +17,7 @@ halt:
 
 # Context switch: ctx_switch(context_t *from, context_t *to)
 # a0 = from, a1 = to
-# Offsets match context_t in uros.h:
+# Offsets match context_t in helios.h:
 # x1(ra)=0, x2(sp)=8, x3(gp)=16, x4(tp)=24, x5-x31, sstatus=248, sepc=256
 .align 4
 ctx_switch:

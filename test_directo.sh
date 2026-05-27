@@ -1,9 +1,9 @@
 #!/bin/bash
-echo "=== Test Directo de uROS ==="
+echo "=== Test Directo de HeliOS ==="
 echo "Lanzando QEMU directamente (sin make)..."
 echo ""
 echo "INSTRUCCIONES:"
-echo "1. Cuando veas 'uROS>', escribe: help"
+echo "1. Cuando veas 'HeliOS>', escribe: help"
 echo "2. Luego escribe: uptime"
 echo "3. Para salir: Ctrl+A luego X"
 echo ""

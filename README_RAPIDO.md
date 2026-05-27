@@ -1,8 +1,8 @@
-# uROS - Guía Rápida 🚀
+# HeliOS - Guía Rápida 🚀
 
-## ¿Qué es uROS?
+## ¿Qué es HeliOS?
 
-uROS es un mini sistema operativo para RISC-V 64 que corre en QEMU con:
+HeliOS combina Helium Browser + OS: un mini sistema operativo para RISC-V 64 que corre en QEMU con:
 - ✅ Shell interactiva
 - ✅ Scheduler Round-Robin cooperativo/preemptivo
 - ✅ Scheduler SJF
@@ -25,7 +25,7 @@ make run
 ```
 
 ### 3️⃣ Probar Comandos
-En el prompt `uROS>`, escribe:
+En el prompt `HeliOS>`, escribe:
 ```
 help
 ps

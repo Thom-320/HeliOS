@@ -32,7 +32,7 @@ OpenSBI v1.5.1
 
 [... Platform info ...]
 
-=== uROS UART Test ===
+=== HeliOS UART Test ===
 Test 1: Echo simple
 Type characters (Ctrl+C to exit):
 
@@ -112,7 +112,7 @@ h
 **Dime EXACTAMENTE qué ves:**
 
 1. ¿Ves la pantalla de OpenSBI? (Sí/No)
-2. ¿Ves "=== uROS UART Test ==="? (Sí/No)
+2. ¿Ves "=== HeliOS UART Test ==="? (Sí/No)
 3. ¿Ves "Type characters (Ctrl+C to exit):"? (Sí/No)
 4. Cuando presionas `h`:
    - [ ] No pasa nada

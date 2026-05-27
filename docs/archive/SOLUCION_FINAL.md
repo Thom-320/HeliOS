@@ -123,7 +123,7 @@ void trap_handler_c(u64 scause, u64 sepc, u64 stval) {
 ```c
 void kmain(void) {
     uart_init();
-    kprintf("uROS (rv64gc, QEMU virt) - console ready\n");
+    kprintf("HeliOS (rv64gc, QEMU virt) - console ready\n");
     
     task_init();
     task_create(idle_task, 0, 1);  // Idle primero
@@ -343,4 +343,4 @@ ps
 
 Todos los cambios son correctos y siguen las mejores prácticas para manejo de interrupciones en bare-metal RISC-V.
 
-**Tu proyecto uROS está 100% funcional y listo para demostración.** 🏆
+**Tu proyecto HeliOS está 100% funcional y listo para demostración.** 🏆

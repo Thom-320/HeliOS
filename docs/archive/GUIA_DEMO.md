@@ -1,8 +1,8 @@
-# 🎬 Guía de Demo - uROS
+# 🎬 Guía de Demo - HeliOS
 
 ## 📖 ¿Qué hace este proyecto?
 
-**uROS** es un mini sistema operativo educativo que demuestra los conceptos fundamentales de un OS:
+**HeliOS** es un mini sistema operativo educativo que demuestra los conceptos fundamentales de un OS:
 
 ### Funcionalidades Implementadas
 
@@ -17,7 +17,7 @@
    - Implementa echo y backspace
 
 3. **🖥️ Shell Interactiva**
-   - Prompt `uROS>`
+   - Prompt `HeliOS>`
    - Parser de comandos
    - 10+ comandos disponibles
 
@@ -49,7 +49,7 @@
 
 **Uso:**
 ```
-uROS> help
+HeliOS> help
 ```
 
 **Salida:**
@@ -74,7 +74,7 @@ Available commands:
 
 **Uso:**
 ```
-uROS> ps
+HeliOS> ps
 ```
 
 **Salida:**
@@ -99,7 +99,7 @@ PID  STATE     TICKS  BURST_EST  ARRIVAL
 
 **Uso:**
 ```
-uROS> run cpu
+HeliOS> run cpu
 ```
 
 **Salida:**
@@ -116,7 +116,7 @@ Created CPU task with PID 1
 
 **Uso:**
 ```
-uROS> run io
+HeliOS> run io
 ```
 
 **Salida:**
@@ -133,7 +133,7 @@ Created I/O task with PID 2
 
 **Uso:**
 ```
-uROS> kill 1
+HeliOS> kill 1
 ```
 
 **Salida:**
@@ -150,7 +150,7 @@ Task 1 killed
 
 **Uso:**
 ```
-uROS> sched rr
+HeliOS> sched rr
 ```
 
 **Salida:**
@@ -167,7 +167,7 @@ Scheduler: Round-Robin (quantum=5 ticks)
 
 **Uso:**
 ```
-uROS> sched sjf
+HeliOS> sched sjf
 ```
 
 **Salida:**
@@ -184,7 +184,7 @@ Scheduler: SJF (non-preemptive)
 
 **Uso:**
 ```
-uROS> bench
+HeliOS> bench
 ```
 
 **Salida esperada:**
@@ -211,7 +211,7 @@ SJF       | 18.7     | 38.1         | 0.26 tasks/sec
 
 **Uso:**
 ```
-uROS> uptime
+HeliOS> uptime
 ```
 
 **Salida:**
@@ -228,7 +228,7 @@ Uptime: 0.00 seconds (0 ticks)
 
 **Uso:**
 ```
-uROS> meminfo
+HeliOS> meminfo
 ```
 
 **Salida:**
@@ -262,41 +262,41 @@ cd "/Users/thom/Library/Mobile Documents/com~apple~CloudDocs/Universidad/OS/mini
 
 **Salida esperada:**
 ```
-=== uROS Demo Script ===
+=== HeliOS Demo Script ===
 Running commands: help, ps, run cpu, run io, ps, sched rr, meminfo
 
 [OpenSBI arranca...]
 
-uROS (rv64gc, QEMU virt) - console ready
+HeliOS (rv64gc, QEMU virt) - console ready
 ticks=0
 Initializing task system...
 Initializing scheduler...
 Creating idle task...
 System initialized, starting shell...
 
-uROS> help
+HeliOS> help
 [Lista de comandos]
 
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    0      1          0
 
-uROS> run cpu
+HeliOS> run cpu
 Created CPU task with PID 1
 
-uROS> run io
+HeliOS> run io
 Created I/O task with PID 2
 
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    0      1          0
 1    READY    0      20          0
 2    READY    0      15          0
 
-uROS> sched rr
+HeliOS> sched rr
 Scheduler: Round-Robin (quantum=5 ticks)
 
-uROS> meminfo
+HeliOS> meminfo
 Heap used: 24576 / 262144 bytes
 
 [Script termina automáticamente]
@@ -314,7 +314,7 @@ make clean && make -j
 make run
 ```
 
-**En el prompt `uROS>`, escribe:**
+**En el prompt `HeliOS>`, escribe:**
 ```
 help
 ps
@@ -354,14 +354,14 @@ make clean && make -j
 make run
 
 # 3. Comandos en orden:
-uROS> help              # (1) Mostrar capacidades
-uROS> ps                # (2) Ver idle task inicial
-uROS> run cpu           # (3) Crear tarea CPU-bound
-uROS> run io            # (4) Crear tarea I/O-bound
-uROS> ps                # (5) Ver 3 tareas activas
-uROS> sched rr          # (6) Confirmar scheduler RR
-uROS> meminfo           # (7) Mostrar uso de memoria
-uROS> uptime            # (8) Mostrar tiempo de ejecución
+HeliOS> help              # (1) Mostrar capacidades
+HeliOS> ps                # (2) Ver idle task inicial
+HeliOS> run cpu           # (3) Crear tarea CPU-bound
+HeliOS> run io            # (4) Crear tarea I/O-bound
+HeliOS> ps                # (5) Ver 3 tareas activas
+HeliOS> sched rr          # (6) Confirmar scheduler RR
+HeliOS> meminfo           # (7) Mostrar uso de memoria
+HeliOS> uptime            # (8) Mostrar tiempo de ejecución
 ```
 
 ### Demo Express (2 minutos)
@@ -407,7 +407,7 @@ make gdb
    - Sistema se inicializa correctamente
 
 2. **✅ Shell Interactiva Funcional**
-   - Prompt `uROS>` responde inmediatamente
+   - Prompt `HeliOS>` responde inmediatamente
    - Parsing de comandos correcto
    - Manejo de errores (comandos desconocidos)
 
@@ -465,7 +465,7 @@ Antes de presentar, verifica:
 
 - [ ] `make clean && make -j` compila sin errores
 - [ ] `make run` arranca correctamente
-- [ ] Prompt `uROS>` aparece
+- [ ] Prompt `HeliOS>` aparece
 - [ ] `help` muestra todos los comandos
 - [ ] `ps` muestra idle task (PID 0)
 - [ ] `run cpu` crea tarea (PID 1)

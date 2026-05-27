@@ -1,8 +1,8 @@
 #!/bin/bash
-# uROS Demo Script
+# HeliOS Demo Script
 # Ejecuta una secuencia de comandos para demostrar el sistema
 
-echo "=== uROS Demo Script ==="
+echo "=== HeliOS Demo Script ==="
 echo "Running commands: help, ps, run cpu, run io, ps, sched rr, meminfo"
 echo ""
 

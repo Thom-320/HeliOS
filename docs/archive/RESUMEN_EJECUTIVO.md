@@ -1,8 +1,8 @@
-# 📊 Resumen Ejecutivo - uROS
+# 📊 Resumen Ejecutivo - HeliOS
 
-## 🎯 ¿Qué es uROS?
+## 🎯 ¿Qué es HeliOS?
 
-**uROS** es un mini sistema operativo educativo para RISC-V 64 que demuestra:
+**HeliOS** es un mini sistema operativo educativo para RISC-V 64 que demuestra:
 - ✅ Boot process con OpenSBI
 - ✅ Driver de hardware (UART)
 - ✅ Shell interactiva
@@ -101,7 +101,7 @@ Ya tienes preparado:
 git init
 git branch -M main
 git add .
-git commit -m "uROS: Mini OS educativo RISC-V 64"
+git commit -m "HeliOS: Mini OS educativo RISC-V 64"
 # Luego crear repo en GitHub y push
 ```
 

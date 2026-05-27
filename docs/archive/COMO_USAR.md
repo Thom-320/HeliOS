@@ -1,8 +1,8 @@
-# 🚀 Cómo Usar uROS - Guía Rápida
+# 🚀 Cómo Usar HeliOS - Guía Rápida
 
 ## ✅ Estado Actual del Sistema
 
-Tu sistema uROS está **100% funcional** con:
+Tu sistema HeliOS está **100% funcional** con:
 - ✅ Timer funcionando (100Hz)
 - ✅ Scheduler preemptivo configurable
 - ✅ **Sincronización implementada** (semáforos + mutex)
@@ -35,7 +35,7 @@ make run
 ### 3. Esperar a que aparezca:
 ```
 System initialized, starting shell...
-uROS>
+HeliOS>
 ```
 
 ### 4. Escribir comandos MANUALMENTE:
@@ -75,7 +75,7 @@ ps
 # 1. Ejecutar
 make run
 
-# 2. Cuando veas "uROS>", escribe:
+# 2. Cuando veas "HeliOS>", escribe:
 help
 
 # 3. Verificar timer funciona:
@@ -139,32 +139,32 @@ PID  STATE     TICKS  BURST_EST  ARRIVAL
 
 ### Test 1: Demo Básica
 ```
-uROS> pcdemo
+HeliOS> pcdemo
 ```
 ✅ **Esperado:** Ver alternancia Producer/Consumer sin race conditions
 
 ### Test 2: Modo Preemptivo
 ```
-uROS> sched preempt on
-uROS> pcdemo
+HeliOS> sched preempt on
+HeliOS> pcdemo
 ```
 ✅ **Esperado:** Alternancia más fluida y natural
 
 ### Test 3: Modo Cooperativo
 ```
-uROS> sched preempt off
-uROS> pcdemo
+HeliOS> sched preempt off
+HeliOS> pcdemo
 ```
 ✅ **Esperado:** Alternancia en puntos de yield
 
 ### Test 4: Timer Funciona
 ```
-uROS> uptime
+HeliOS> uptime
 Uptime: 0.0 seconds (0 ticks)
 
 [esperar 5 segundos]
 
-uROS> uptime
+HeliOS> uptime
 Uptime: 5.12 seconds (512 ticks)
 ```
 ✅ **Esperado:** Ticks aumentan automáticamente
@@ -187,7 +187,7 @@ Los scripts automáticos (con `echo` o `printf | timeout`) tienen problemas porq
 
 Ejecuta `make run` y prueba:
 
-- [ ] Sistema arranca y muestra `uROS>`
+- [ ] Sistema arranca y muestra `HeliOS>`
 - [ ] Comando `help` funciona
 - [ ] Comando `ps` muestra idle task (PID 0)
 - [ ] Comando `uptime` muestra ticks aumentando
@@ -204,7 +204,7 @@ Ejecuta `make run` y prueba:
 ### Salida Normal:
 
 ```
-uROS> pcdemo
+HeliOS> pcdemo
 === Producer-Consumer Demo ===
 Buffer size: 16 items
 Creating producer and consumer tasks...
@@ -236,7 +236,7 @@ Consumer: consumed item 10 from index 9
 Producer: finished producing 10 items
 Consumer: finished consuming 10 items
 
-uROS>
+HeliOS>
 ```
 
 ### Qué Observar:

@@ -1,4 +1,4 @@
-# 🎉 RESUMEN FINAL COMPLETO - uROS
+# 🎉 RESUMEN FINAL COMPLETO - HeliOS
 
 ## ✅ PROYECTO 100% COMPLETADO
 
@@ -77,7 +77,7 @@ lib/
 └── printf.c             # kprintf implementation
 
 include/
-├── uros.h               # Headers principales
+├── helios.h               # Headers principales
 └── config.h             # Configuración (PREEMPT)
 
 scripts/
@@ -302,7 +302,7 @@ uptime            # (12) Ver tiempo final
 
 ## 🎉 CONCLUSIÓN
 
-**Tu proyecto uROS es un éxito completo:**
+**Tu proyecto HeliOS es un éxito completo:**
 
 - 100% de funcionalidades implementadas
 - 100% de documentación completa

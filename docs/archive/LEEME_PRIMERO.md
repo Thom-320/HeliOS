@@ -1,4 +1,4 @@
-# 🚀 LÉEME PRIMERO - uROS
+# 🚀 LÉEME PRIMERO - HeliOS
 
 ## ⚡ INICIO RÁPIDO (30 segundos)
 
@@ -8,7 +8,7 @@ make clean && make -j
 make run
 ```
 
-**Cuando veas `uROS>`, escribe con tu teclado:**
+**Cuando veas `HeliOS>`, escribe con tu teclado:**
 ```
 help
 uptime
@@ -22,7 +22,7 @@ pcdemo
 
 ## 🎯 QUÉ HACE ESTE PROYECTO
 
-uROS es un mini sistema operativo educativo para RISC-V 64 que demuestra:
+HeliOS es un mini sistema operativo educativo para RISC-V 64 que demuestra:
 
 1. **Boot** - Arranca con OpenSBI en QEMU
 2. **UART Driver** - Console I/O (NS16550A)
@@ -59,7 +59,7 @@ uROS es un mini sistema operativo educativo para RISC-V 64 que demuestra:
 ## 🔒 DEMO DE SINCRONIZACIÓN
 
 ```
-uROS> pcdemo
+HeliOS> pcdemo
 === Producer-Consumer Demo ===
 Buffer size: 16 items
 Creating producer and consumer tasks...
@@ -89,7 +89,7 @@ Consumer: finished consuming 10 items
 ## 💾 GESTIÓN DE MEMORIA
 
 ```
-uROS> meminfo
+HeliOS> meminfo
 === Memory Usage ===
 Heap total:    262144 bytes
 Heap used:     24576 bytes (9%)
@@ -97,15 +97,15 @@ Heap free:     237568 bytes (90%)
 Free blocks:   3
 Fragmentation: low
 
-uROS> run cpu
+HeliOS> run cpu
 Created CPU task with PID 1
 
-uROS> meminfo
+HeliOS> meminfo
 Heap used:     28672 bytes (10%)  # +4KB stack
 
-uROS> kill 1
+HeliOS> kill 1
 
-uROS> meminfo
+HeliOS> meminfo
 Heap used:     24576 bytes (9%)   # Stack liberado!
 ```
 
@@ -290,7 +290,7 @@ boot/
 
 ---
 
-**¡Tu proyecto uROS está 100% completo y listo!** 🎉
+**¡Tu proyecto HeliOS está 100% completo y listo!** 🎉
 
 **AHORA:** Ejecuta `make run` y prueba con tu teclado.
 

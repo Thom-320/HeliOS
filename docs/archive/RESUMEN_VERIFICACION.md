@@ -1,4 +1,4 @@
-# 🎉 Verificación Completa del Proyecto uROS
+# 🎉 Verificación Completa del Proyecto HeliOS
 
 ## ✅ CONCLUSIÓN: El código NO ha sido dañado - Todo funciona perfectamente
 
@@ -19,22 +19,22 @@ make clean && make -j
 
 #### Banner y Prompt
 ```
-uROS (rv64gc, QEMU virt) - console ready
+HeliOS (rv64gc, QEMU virt) - console ready
 ticks=0
 Initializing task system...
 Initializing scheduler...
 Creating idle task...
 System initialized, starting shell...
-uROS>
+HeliOS>
 ```
 ✅ Banner aparece **UNA SOLA VEZ**
-✅ Prompt `uROS>` aparece y funciona correctamente
+✅ Prompt `HeliOS>` aparece y funciona correctamente
 
 #### Comandos Verificados
 
 **`help`**
 ```
-uROS> help
+HeliOS> help
 Available commands:
   help     - Show this help
   ps       - List tasks
@@ -50,18 +50,18 @@ Available commands:
 
 **`ps`**
 ```
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    0      1          0
 ```
 
 **`run cpu` y `run io`**
 ```
-uROS> run cpu
+HeliOS> run cpu
 Created CPU task with PID 1
-uROS> run io
+HeliOS> run io
 Created I/O task with PID 2
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    0      1          0
 1    READY    0      20          0
@@ -70,13 +70,13 @@ PID  STATE     TICKS  BURST_EST  ARRIVAL
 
 **`sched rr`**
 ```
-uROS> sched rr
+HeliOS> sched rr
 Scheduler: Round-Robin (quantum=5 ticks)
 ```
 
 **`meminfo`**
 ```
-uROS> meminfo
+HeliOS> meminfo
 Heap used: 24576 / 262144 bytes
 ```
 
@@ -103,7 +103,7 @@ Vamos a verificar el checklist que te dio ChatGPT:
 ✅ Echo de caracteres implementado
 
 #### Prompt en Shell
-✅ `kprintf("uROS> ");` antes de `uart_gets()` (como recomendó ChatGPT)
+✅ `kprintf("HeliOS> ");` antes de `uart_gets()` (como recomendó ChatGPT)
 ✅ Prompt visible y funcional
 
 ## 📊 Comparación con Recomendaciones de ChatGPT
@@ -113,7 +113,7 @@ Vamos a verificar el checklist que te dio ChatGPT:
 | Arreglar `run-qemu.sh` | ✅ HECHO | `-serial stdio -monitor none` implementado |
 | Eliminar líneas `///` | ✅ HECHO | Todas eliminadas |
 | Permisos de ejecución | ✅ HECHO | Script ejecutable |
-| Prompt antes de leer | ✅ HECHO | `kprintf("uROS> ")` implementado |
+| Prompt antes de leer | ✅ HECHO | `kprintf("HeliOS> ")` implementado |
 | Plan cooperativo | ✅ HECHO | `need_resched` + `sched_maybe_yield_safe()` |
 | Banner una sola vez | ✅ HECHO | Imprime solo una vez |
 

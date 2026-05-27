@@ -20,7 +20,7 @@ Se ha implementado un sistema de scheduling configurable que permite cambiar ent
 
 ## 🔧 Archivos Modificados
 
-### 2. `include/uros.h`
+### 2. `include/helios.h`
 **Cambios:**
 - Incluye `config.h`
 - Agrega prototipos:
@@ -169,7 +169,7 @@ static void cmd_sleep(const char *arg) {
 ```c
 void kmain(void) {
     uart_init();
-    kprintf("uROS (rv64gc, QEMU virt) - console ready\n");
+    kprintf("HeliOS (rv64gc, QEMU virt) - console ready\n");
     
     task_init();          // 1. Sistema de tareas
     sched_init();         // 2. Scheduler
@@ -220,36 +220,36 @@ make run
 
 #### Ver tiempo de ejecución (ahora funciona con timer!)
 ```
-uROS> uptime
+HeliOS> uptime
 Uptime: 5.23 seconds (523 ticks)
 ```
 
 #### Cambiar entre modos
 ```
-uROS> sched preempt off
+HeliOS> sched preempt off
 Preemption: DISABLED (cooperative scheduling)
 
-uROS> sched preempt on
+HeliOS> sched preempt on
 Preemption: ENABLED (timer-driven context switches)
 ```
 
 #### Dormir N ticks
 ```
-uROS> sleep 50
+HeliOS> sleep 50
 Sleeping for 50 ticks...
 Done sleeping
 ```
 
 #### Ver tareas (con preemption activa)
 ```
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    125    1          0
 
-uROS> run cpu
+HeliOS> run cpu
 Created CPU task with PID 1
 
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    150    1          0
 1    RUNNING  25     20          130
@@ -261,19 +261,19 @@ PID  STATE     TICKS  BURST_EST  ARRIVAL
 
 ### 1. Timer Funciona
 ```
-uROS> uptime
+HeliOS> uptime
 Uptime: 0.00 seconds (0 ticks)
 [esperar ~5 segundos]
-uROS> uptime
+HeliOS> uptime
 Uptime: 5.12 seconds (512 ticks)
 ```
 ✅ Los ticks avanzan automáticamente
 
 ### 2. Preemption ON
 ```
-uROS> sched preempt on
+HeliOS> sched preempt on
 Preemption: ENABLED
-uROS> run cpu
+HeliOS> run cpu
 Created CPU task with PID 1
 [ver que ps muestra cambios de TICKS automáticamente]
 ```
@@ -281,9 +281,9 @@ Created CPU task with PID 1
 
 ### 3. Preemption OFF
 ```
-uROS> sched preempt off
+HeliOS> sched preempt off
 Preemption: DISABLED
-uROS> run cpu
+HeliOS> run cpu
 Created CPU task with PID 2
 [tareas solo cambian en yield manual]
 ```
@@ -291,7 +291,7 @@ Created CPU task with PID 2
 
 ### 4. Sleep Funciona
 ```
-uROS> sleep 100
+HeliOS> sleep 100
 Sleeping for 100 ticks...
 [espera ~1 segundo]
 Done sleeping

@@ -18,17 +18,17 @@ Matemáticas Aplicadas y Ciencias de la Computación
 
 ## 1. INTRODUCTION
 
-The RISC-V architecture offers an open-source alternative to proprietary Instruction Set Architectures (ISAs) like x86 or ARM. However, the ecosystem for RISC-V operating systems is still maturing. This gap motivated the development of **Helios**, a minimal operating system designed for educational purposes on the RISC-V 64-bit environment.
+The RISC-V architecture offers an open-source alternative to proprietary Instruction Set Architectures (ISAs) like x86 or ARM. However, the ecosystem for RISC-V operating systems is still maturing. This gap motivated the development of **HeliOS**, a minimal operating system designed for educational purposes on the RISC-V 64-bit environment.
 
 The primary goal of this project is to demonstrate fundamental operating system concepts through practical implementation. Rather than aiming for production-level features, we focused on creating a clean, understandable codebase that illustrates core OS mechanisms including process scheduling, memory management, hardware abstraction, and system calls.
 
-**Helios** serves as both a learning tool and a research platform. By implementing real OS components from the ground up, we gained deeper insights into the practical considerations of system software development that theoretical study alone cannot provide.
+**HeliOS** serves as both a learning tool and a research platform. By implementing real OS components from the ground up, we gained deeper insights into the practical considerations of system software development that theoretical study alone cannot provide.
 
 ---
 
 ## 2. PROJECT VISION & ARCHITECTURE
 
-**Helios** is built around a microkernel-inspired architecture that keeps the core system lean while isolating hardware-specific components. This design facilitates reasoning about the system and allows for future expansion. The kernel is organized into distinct layers:
+**HeliOS** is built around a microkernel-inspired architecture that keeps the core system lean while isolating hardware-specific components. This design facilitates reasoning about the system and allows for future expansion. The kernel is organized into distinct layers:
 
 | Layer                                | Core Function                                          | Components                                                                                                                                                                                                                                                   |
 | :----------------------------------- | :----------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -197,7 +197,7 @@ _Figure 3: Real-time memory usage statistics showing heap allocation._
 We implemented a complete context switch that preserves all 31 RISC-V general-purpose registers and critical CSRs (sstatus, sepc). This enables true preemptive multitasking.
 
 **[INSERT IMAGE HERE: Screenshot of the boot sequence with the ASCII Art Banner]**
-_Figure 4: Helios OS Boot Sequence._
+_Figure 4: HeliOS OS Boot Sequence._
 
 ### 4.2 Task Management System
 
@@ -208,7 +208,7 @@ _Figure 5: Process Control Block structure._
 
 ### 4.3 Interactive Shell
 
-Unlike many educational OS projects that are static, **Helios** features a fully interactive shell with over 10 commands.
+Unlike many educational OS projects that are static, **HeliOS** features a fully interactive shell with over 10 commands.
 
 - **Commands:** `help`, `ps` (process list), `kill` (terminate process), `sched` (switch scheduler), `bench` (benchmark), `meminfo` (memory stats).
 
@@ -219,7 +219,7 @@ _Figure 6: Interactive Shell Interface._
 
 ## 5. CONCLUSION
 
-The **Helios** project successfully demonstrates the implementation of a functional operating system kernel for RISC-V. We have achieved:
+The **HeliOS** project successfully demonstrates the implementation of a functional operating system kernel for RISC-V. We have achieved:
 
 1.  **Stability:** A robust kernel that handles interrupts and context switches without crashing.
 2.  **Functionality:** A rich set of features including multitasking, synchronization, and dynamic memory.

@@ -1,8 +1,8 @@
-# 🚀 uROS - Guía Completa del Proyecto
+# 🚀 HeliOS - Guía Completa del Proyecto
 
-## 📋 ¿Qué es uROS?
+## 📋 ¿Qué es HeliOS?
 
-**uROS** es un mini sistema operativo educativo para arquitectura **RISC-V 64** que corre sobre **QEMU** con las siguientes características:
+**HeliOS** es un mini sistema operativo educativo para arquitectura **RISC-V 64** que corre sobre **QEMU** con las siguientes características:
 
 ### Características Principales
 
@@ -18,7 +18,7 @@
 
 ### Lo Que Hace Este Proyecto
 
-uROS demuestra los conceptos fundamentales de un sistema operativo:
+HeliOS demuestra los conceptos fundamentales de un sistema operativo:
 
 1. **Boot y Configuración**: Arranca desde OpenSBI y configura el sistema
 2. **Driver de Hardware**: Controla el UART para I/O de consola
@@ -31,7 +31,7 @@ uROS demuestra los conceptos fundamentales de un sistema operativo:
 
 ## 🎯 Comandos Disponibles
 
-Una vez que ejecutes el sistema, tendrás acceso a estos comandos en el prompt `uROS>`:
+Una vez que ejecutes el sistema, tendrás acceso a estos comandos en el prompt `HeliOS>`:
 
 ### Comandos Básicos
 
@@ -106,17 +106,17 @@ O directamente:
 
 1. OpenSBI arranca (banner con logo ASCII)
 2. Información de la plataforma QEMU
-3. Banner de uROS:
+3. Banner de HeliOS:
    ```
-   uROS (rv64gc, QEMU virt) - console ready
+   HeliOS (rv64gc, QEMU virt) - console ready
    ticks=0
    Initializing task system...
    Initializing scheduler...
    Creating idle task...
    System initialized, starting shell...
-   uROS>
+   HeliOS>
    ```
-4. Prompt interactivo `uROS>` esperando tus comandos
+4. Prompt interactivo `HeliOS>` esperando tus comandos
 
 **Para salir:** Presiona `Ctrl+C`
 
@@ -157,7 +157,7 @@ uptime      # Ver tiempo de ejecución
 ### Salida Esperada de la Demo
 
 ```
-uROS> help
+HeliOS> help
 Available commands:
   help          - Show this help
   ps            - List tasks
@@ -170,26 +170,26 @@ Available commands:
   uptime        - Show system uptime
   meminfo       - Show memory usage
 
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    0      1          0
 
-uROS> run cpu
+HeliOS> run cpu
 Created CPU task with PID 1
 
-uROS> run io
+HeliOS> run io
 Created I/O task with PID 2
 
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    0      1          0
 1    READY    0      20          0
 2    READY    0      15          0
 
-uROS> sched rr
+HeliOS> sched rr
 Scheduler: Round-Robin (quantum=5 ticks)
 
-uROS> meminfo
+HeliOS> meminfo
 Heap used: 24576 / 262144 bytes
 ```
 
@@ -227,7 +227,7 @@ mini-os/
 ├── lib/
 │   └── printf.c             # Implementación de printf
 ├── include/
-│   └── uros.h               # Headers principales
+│   └── helios.h               # Headers principales
 ├── scripts/
 │   ├── run-qemu.sh          # Lanzador de QEMU
 │   └── demo.sh              # Demo automática
@@ -353,45 +353,45 @@ $ make run
 
 [OpenSBI arranca...]
 
-uROS (rv64gc, QEMU virt) - console ready
+HeliOS (rv64gc, QEMU virt) - console ready
 ticks=0
 Initializing task system...
 Initializing scheduler...
 Creating idle task...
 System initialized, starting shell...
-uROS> help
+HeliOS> help
 Available commands:
   help          - Show this help
   ps            - List tasks
   [... más comandos ...]
 
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    0      1          0
 
-uROS> run cpu
+HeliOS> run cpu
 Created CPU task with PID 1
 
-uROS> run io
+HeliOS> run io
 Created I/O task with PID 2
 
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    0      1          0
 1    READY    0      20          0
 2    READY    0      15          0
 
-uROS> meminfo
+HeliOS> meminfo
 Heap used: 24576 / 262144 bytes
 
-uROS> [Ctrl+C para salir]
+HeliOS> [Ctrl+C para salir]
 ```
 
 ---
 
 ## 🎯 Conclusión
 
-**uROS está 100% funcional y listo para:**
+**HeliOS está 100% funcional y listo para:**
 - ✅ Demostración en clase
 - ✅ Evaluación de proyecto
 - ✅ Estudio de sistemas operativos
@@ -417,4 +417,4 @@ make run
 ./scripts/demo.sh
 ```
 
-**¡Disfruta explorando uROS!** 🎉
+**¡Disfruta explorando HeliOS!** 🎉

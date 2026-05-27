@@ -2,11 +2,11 @@
 
 ## 🎯 DESCRIPCIÓN DEL PROBLEMA
 
-**Sistema:** uROS mini-OS en RISC-V 64 (rv64gc) sobre QEMU virt con OpenSBI
+**Sistema:** HeliOS mini-OS en RISC-V 64 (rv64gc) sobre QEMU virt con OpenSBI
 
 **Síntoma:** 
 - Sistema bootea correctamente
-- Muestra prompt `uROS>`
+- Muestra prompt `HeliOS>`
 - **NO acepta entrada del teclado** (no responde a ninguna tecla)
 
 **Contexto:**
@@ -80,7 +80,7 @@ char *uart_gets(char *buf, int maxlen) {
 ```c
 void kmain(void) {
     uart_init();
-    kprintf("uROS ready\n");
+    kprintf("HeliOS ready\n");
     
     task_init();
     task_create(idle_task, 0, 1);
@@ -123,7 +123,7 @@ Algo en el flujo de interrupciones está corrompiendo los registros UART (IER ca
 
 ```
 System initialized, starting shell...
-uROS>
+HeliOS>
 [cursor aquí - no acepta teclas]
 ```
 
@@ -193,7 +193,7 @@ int uart_getc_blocking(void) {
 
 **ChatGPT Codex:**
 
-Mi sistema uROS (RISC-V en QEMU) bootea y muestra `uROS>` pero NO acepta entrada del teclado cuando timer está activo.
+Mi sistema HeliOS (RISC-V en QEMU) bootea y muestra `HeliOS>` pero NO acepta entrada del teclado cuando timer está activo.
 
 **Configuración:**
 - UART polling (sin interrupciones UART)

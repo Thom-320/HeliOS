@@ -1,8 +1,8 @@
-# 🔒 Implementación de Sincronización - uROS
+# 🔒 Implementación de Sincronización - HeliOS
 
 ## 📋 Resumen
 
-Se ha implementado sincronización básica en uROS con semáforos y mutex para coordinar tareas concurrentes.
+Se ha implementado sincronización básica en HeliOS con semáforos y mutex para coordinar tareas concurrentes.
 
 ---
 
@@ -34,7 +34,7 @@ void mutex_unlock(mutex_t *m);
 
 ## 🔧 Archivos Modificados
 
-### 2. `include/uros.h`
+### 2. `include/helios.h`
 
 Agregados tipos y prototipos:
 
@@ -184,7 +184,7 @@ make run
 ### Comando en Shell
 
 ```bash
-uROS> pcdemo
+HeliOS> pcdemo
 ```
 
 ---
@@ -192,7 +192,7 @@ uROS> pcdemo
 ## 📊 Ejemplo de Salida
 
 ```
-uROS> pcdemo
+HeliOS> pcdemo
 === Producer-Consumer Demo ===
 Buffer size: 16 items
 Creating producer and consumer tasks...
@@ -224,7 +224,7 @@ Consumer: consumed item 10 from index 9
 Producer: finished producing 10 items
 Consumer: finished consuming 10 items
 
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    2150   1          0
 1    ZOMBIE   150    20         100
@@ -276,37 +276,37 @@ PID  STATE     TICKS  BURST_EST  ARRIVAL
 
 ### Prueba 1: Demo Básica
 ```bash
-uROS> pcdemo
+HeliOS> pcdemo
 # Observar alternancia
 ```
 
 ### Prueba 2: Modo Preemptivo
 ```bash
-uROS> sched preempt on
-uROS> pcdemo
+HeliOS> sched preempt on
+HeliOS> pcdemo
 # Alternancia más fluida
 ```
 
 ### Prueba 3: Modo Cooperativo
 ```bash
-uROS> sched preempt off
-uROS> pcdemo
+HeliOS> sched preempt off
+HeliOS> pcdemo
 # Alternancia en yields
 ```
 
 ### Prueba 4: Ver Estado de Tareas
 ```bash
-uROS> pcdemo
+HeliOS> pcdemo
 # Esperar un poco
-uROS> ps
+HeliOS> ps
 # Ver PIDs 1 y 2 alternando RUNNING/READY
 ```
 
 ### Prueba 5: Múltiples Demos
 ```bash
-uROS> pcdemo
+HeliOS> pcdemo
 # Esperar que termine
-uROS> pcdemo
+HeliOS> pcdemo
 # Debe funcionar correctamente
 ```
 

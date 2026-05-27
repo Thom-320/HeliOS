@@ -1,4 +1,4 @@
-# ✅ Verificación Manual de uROS
+# ✅ Verificación Manual de HeliOS
 
 ## 🔧 FIX APLICADO: uart_gets con yield
 
@@ -34,14 +34,14 @@ make run
 Verás:
 ```
 System initialized, starting shell...
-uROS>
+HeliOS>
 ```
 
 ### 4. ESCRIBIR (con tu teclado):
 
 **Paso 1:** Escribe `help` y presiona Enter
 ```
-uROS> help
+HeliOS> help
 ```
 
 **Esperado:**
@@ -64,7 +64,7 @@ Available commands:
 
 **Paso 2:** Escribe `uptime` y presiona Enter
 ```
-uROS> uptime
+HeliOS> uptime
 ```
 
 **Esperado:**
@@ -74,7 +74,7 @@ Uptime: 0.XX seconds (XX ticks)
 
 **Paso 3:** Espera 3 segundos, escribe `uptime` de nuevo
 ```
-uROS> uptime
+HeliOS> uptime
 ```
 
 **Esperado:**
@@ -85,7 +85,7 @@ Uptime: 3.XX seconds (3XX ticks)
 
 **Paso 4:** Escribe `ps`
 ```
-uROS> ps
+HeliOS> ps
 ```
 
 **Esperado:**
@@ -96,7 +96,7 @@ PID  STATE     TICKS  BURST_EST  ARRIVAL
 
 **Paso 5:** Escribe `pcdemo`
 ```
-uROS> pcdemo
+HeliOS> pcdemo
 ```
 
 **Esperado:**
@@ -119,12 +119,12 @@ Consumer: consumed item 3 from index 2
 Producer: finished producing 10 items
 Consumer: finished consuming 10 items
 
-uROS>
+HeliOS>
 ```
 
 **Paso 6:** Escribe `ps` de nuevo
 ```
-uROS> ps
+HeliOS> ps
 ```
 
 **Esperado:**
@@ -137,7 +137,7 @@ PID  STATE     TICKS  BURST_EST  ARRIVAL
 
 **Paso 7:** Escribe `meminfo`
 ```
-uROS> meminfo
+HeliOS> meminfo
 ```
 
 **Esperado:**

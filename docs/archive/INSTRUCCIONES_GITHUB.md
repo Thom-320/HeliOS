@@ -23,7 +23,7 @@ chmod +x scripts/*.sh
 git add .
 
 # 5. Primer commit
-git commit -m "uROS: Mini OS educativo RISC-V 64
+git commit -m "HeliOS: Mini OS educativo RISC-V 64
 
 - Boot con OpenSBI en QEMU virt
 - Shell interactiva con 10+ comandos
@@ -48,13 +48,13 @@ Ready for demo and evaluation."
 gh auth login
 
 # 2. Crear repo público y push
-gh repo create uros-riscv64 --public --source=. --remote=origin --push
+gh repo create helios-riscv64 --public --source=. --remote=origin --push
 ```
 
 ### Opción B: Manualmente en GitHub.com
 
 1. Ve a https://github.com/new
-2. Repository name: `uros-riscv64`
+2. Repository name: `helios-riscv64`
 3. Description: `Mini OS educativo para RISC-V 64 con shell, multitasking y scheduler RR`
 4. Public
 5. NO agregues README, .gitignore, o license (ya los tienes)
@@ -62,7 +62,7 @@ gh repo create uros-riscv64 --public --source=. --remote=origin --push
 
 Luego en la terminal:
 ```bash
-git remote add origin https://github.com/TU_USUARIO/uros-riscv64.git
+git remote add origin https://github.com/TU_USUARIO/helios-riscv64.git
 git push -u origin main
 ```
 
@@ -149,7 +149,7 @@ git push origin v1.0.0
 
 # 3. Crear release en GitHub
 gh release create v1.0.0 \
-  --title "uROS v1.0.0 - Demo Ready" \
+  --title "HeliOS v1.0.0 - Demo Ready" \
   --notes "Primera versión completa con:
 - Shell interactiva funcional
 - Sistema de tareas con context switching
@@ -209,7 +209,7 @@ Responsable: Thomas
 Describir en docs/ cómo funciona el scheduling cooperativo:
 - need_resched flag
 - sched_maybe_yield_safe()
-- Puntos de yield seguros
+- Puntos de yield seghelios
 
 Responsable: Thomas
 ```
@@ -255,12 +255,12 @@ Responsable: Thomas
 Una vez que el repo esté en GitHub, comparte esto con tu equipo:
 
 ```markdown
-# Cómo trabajar en uROS
+# Cómo trabajar en HeliOS
 
 ## Setup inicial
 ```bash
-git clone https://github.com/TU_USUARIO/uros-riscv64.git
-cd uros-riscv64
+git clone https://github.com/TU_USUARIO/helios-riscv64.git
+cd helios-riscv64
 make clean && make -j
 make run
 ```
@@ -320,13 +320,13 @@ cd "/Users/thom/Library/Mobile Documents/com~apple~CloudDocs/Universidad/OS/mini
 git init
 git branch -M main
 git add .
-git commit -m "uROS: Mini OS educativo RISC-V 64 - Initial commit"
+git commit -m "HeliOS: Mini OS educativo RISC-V 64 - Initial commit"
 
 # Crear repo y push (GitHub CLI)
-gh repo create uros-riscv64 --public --source=. --remote=origin --push
+gh repo create helios-riscv64 --public --source=. --remote=origin --push
 
 # O manualmente:
-# git remote add origin https://github.com/TU_USUARIO/uros-riscv64.git
+# git remote add origin https://github.com/TU_USUARIO/helios-riscv64.git
 # git push -u origin main
 
 # Agregar colaboradores (reemplaza usernames)

@@ -1,4 +1,4 @@
-# ✅ Verificación del Plan - uROS
+# ✅ Verificación del Plan - HeliOS
 
 ## 📋 Checklist de To-Dos del Plan
 
@@ -6,7 +6,7 @@
 
 | # | To-Do | Estado | Detalles |
 |---|-------|--------|----------|
-| 1 | Create `include/uros.h` with types, structs (context_t, pcb_t), and all function prototypes | ✅ **COMPLETO** | Tipos definidos, structs completos, todos los prototipos |
+| 1 | Create `include/helios.h` with types, structs (context_t, pcb_t), and all function prototypes | ✅ **COMPLETO** | Tipos definidos, structs completos, todos los prototipos |
 | 2 | Implement `linker.ld` with BASE=0x80200000, sections, and stack | ✅ **COMPLETO** | BASE correcto, secciones .text/.rodata/.data/.bss, _stack_top |
 | 3 | Implement `boot/start.S` with entry point and ctx_switch assembly routine | ✅ **COMPLETO** | Entry point _start, ctx_switch completo |
 | 4 | Implement `drivers/uart.c` for NS16550A at 0x10000000 | ✅ **COMPLETO** | UART_BASE correcto, init/putc/getc/gets implementados |
@@ -29,8 +29,8 @@
 
 | Criterio | Estado | Notas |
 |----------|--------|-------|
-| `make run` boots to "uROS ready" banner | ✅ **SÍ** | Banner: "uROS (rv64gc, QEMU virt) - console ready" |
-| Interactive prompt "uROS> " accepts commands | ✅ **SÍ** | Prompt funcional, acepta todos los comandos |
+| `make run` boots to "HeliOS ready" banner | ✅ **SÍ** | Banner: "HeliOS (rv64gc, QEMU virt) - console ready" |
+| Interactive prompt "HeliOS> " accepts commands | ✅ **SÍ** | Prompt funcional, acepta todos los comandos |
 | `help` lists all commands | ✅ **SÍ** | Lista 10 comandos |
 | `run cpu` and `run io` create visible tasks | ✅ **SÍ** | Crea tareas con PIDs asignados |
 | `ps` shows task states and metrics | ✅ **SÍ** | Muestra PID, STATE, TICKS, BURST_EST, ARRIVAL |
@@ -72,7 +72,7 @@
 | `drivers/uart.c` | ✅ | ✅ | ✅ |
 | `drivers/timer.c` | ✅ | ✅ | ✅ |
 | `lib/printf.c` | ✅ | ✅ | ✅ |
-| `include/uros.h` | ✅ | ✅ | ✅ |
+| `include/helios.h` | ✅ | ✅ | ✅ |
 | `scripts/run-qemu.sh` | ✅ | ✅ | ✅ |
 | `scripts/demo.sh` | ✅ | ✅ | ✅ |
 | `docs/README.md` | ✅ | ✅ | ✅ |
@@ -83,7 +83,7 @@
 
 ## 📝 Detalles de Implementación vs Plan
 
-### 1. ✅ Core Infrastructure (`include/uros.h`)
+### 1. ✅ Core Infrastructure (`include/helios.h`)
 
 **Plan:**
 - Tipos básicos (u8, u16, u32, u64, size_t)
@@ -259,7 +259,7 @@
 **Implementación:**
 ```c
 ✅ uart_init()
-✅ Banner: "uROS (rv64gc, QEMU virt) - console ready"
+✅ Banner: "HeliOS (rv64gc, QEMU virt) - console ready"
 ✅ task_init()
 ⚠️ trap_init() - comentado por estabilidad
 ⚠️ timer_init(100) - comentado por estabilidad

@@ -1,4 +1,4 @@
-# 📋 CAMBIOS FINALES APLICADOS - uROS
+# 📋 CAMBIOS FINALES APLICADOS - HeliOS
 
 ## ✅ RESUMEN EJECUTIVO
 
@@ -16,7 +16,7 @@ Se han aplicado **correcciones críticas** para solucionar el problema de entrad
 void kmain(void) {
     // 1. UART first
     uart_init();
-    kprintf("uROS (rv64gc, QEMU virt) - console ready\n");
+    kprintf("HeliOS (rv64gc, QEMU virt) - console ready\n");
     kprintf("ticks=0\n");
     
     // SELFTEST temporal (quitar después de verificar)
@@ -209,25 +209,25 @@ Initializing scheduler...
 Initializing trap handling...
 Initializing timer...
 System initialized, starting shell...
-uROS>
+HeliOS>
 ```
 ✅ **Boot completo**
 
 ### Test 3: uptime Funciona
 ```
-uROS> uptime
+HeliOS> uptime
 Uptime: 0.15 seconds (15 ticks)
 
 [esperar 3 seg]
 
-uROS> uptime
+HeliOS> uptime
 Uptime: 3.42 seconds (342 ticks)
 ```
 ✅ **Timer funcionando** - Ticks aumentan
 
 ### Test 4: intstats Muestra Estado
 ```
-uROS> intstats
+HeliOS> intstats
 ticks=425  timer_irqs=425  deadline=0x...  now=0x...
 sstatus=0x22  sie=0x20  sip=0x0
 preempt=ON
@@ -236,7 +236,7 @@ preempt=ON
 
 ### Test 5: pcdemo Sincronización
 ```
-uROS> pcdemo
+HeliOS> pcdemo
 === Producer-Consumer Demo ===
 Producer: produced item 1 at index 0
 Consumer: consumed item 1 from index 0
@@ -246,7 +246,7 @@ Consumer: consumed item 1 from index 0
 
 ### Test 6: ps Muestra Tareas
 ```
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    READY    950    1          0
 1    ZOMBIE   125    20         600
@@ -307,7 +307,7 @@ make clean && make -j
 **Cuando veas:** `UART selftest: type one char:`
 → Presiona cualquier tecla
 
-**Cuando veas:** `uROS>`
+**Cuando veas:** `HeliOS>`
 → Escribe: `uptime`
 → Espera 3 segundos
 → Escribe: `uptime` (debe ser mayor)

@@ -1,4 +1,4 @@
-# uROS - RISC-V Mini Operating System
+# HeliOS - RISC-V Mini Operating System
 
 A minimal operating system for RISC-V 64-bit architecture running on QEMU virt platform.
 
@@ -60,7 +60,7 @@ make dtb
 
 ## Shell Commands
 
-Once booted, the system presents an interactive shell prompt: `uROS>`
+Once booted, the system presents an interactive shell prompt: `HeliOS>`
 
 ### Available Commands
 
@@ -116,7 +116,7 @@ The `bench` command runs two rounds of the same task set:
 
 ## Synchronization
 
-uROS provides basic synchronization primitives for coordinating concurrent tasks:
+HeliOS provides basic synchronization primitives for coordinating concurrent tasks:
 
 ### Semaphores
 
@@ -174,7 +174,7 @@ Consumer:
 
 **Running the demo:**
 ```bash
-uROS> pcdemo
+HeliOS> pcdemo
 === Producer-Consumer Demo ===
 Buffer size: 16 items
 Creating producer and consumer tasks...
@@ -201,7 +201,7 @@ Consumer: finished consuming 10 items
 
 ## Memory Management
 
-uROS uses a **free-list allocator** with first-fit allocation and coalescing for efficient memory reuse.
+HeliOS uses a **free-list allocator** with first-fit allocation and coalescing for efficient memory reuse.
 
 ### Algorithm: First-Fit with Coalescing
 
@@ -230,7 +230,7 @@ struct mem_header {
 
 **Memory Stats:**
 ```bash
-uROS> meminfo
+HeliOS> meminfo
 === Memory Usage ===
 Heap total:    262144 bytes
 Heap used:     24576 bytes (9%)
@@ -274,23 +274,23 @@ kfree(buffer);
 
 ```bash
 # Before creating tasks
-uROS> meminfo
+HeliOS> meminfo
 Heap used: 8192 bytes
 
 # After pcdemo
-uROS> pcdemo
+HeliOS> pcdemo
 ...
-uROS> meminfo
+HeliOS> meminfo
 Heap used: 24576 bytes  # Two 4KB stacks + buffers
 
 # After tasks finish (become ZOMBIE)
-uROS> meminfo
+HeliOS> meminfo
 Heap used: 24576 bytes  # Stacks still allocated
 
 # After killing tasks (with task_reap)
-uROS> kill 1
-uROS> kill 2
-uROS> meminfo
+HeliOS> kill 1
+HeliOS> kill 2
+HeliOS> meminfo
 Heap used: 8192 bytes  # Stacks freed!
 ```
 
@@ -304,9 +304,9 @@ Heap used: 8192 bytes  # Stacks freed!
 ## Example Session
 
 ```
-uROS (rv64gc, QEMU virt) - console ready
+HeliOS (rv64gc, QEMU virt) - console ready
 ticks=0
-uROS> help
+HeliOS> help
 Available commands:
   help          - Show this help
   ps            - List tasks
@@ -319,21 +319,21 @@ Available commands:
   uptime        - Show system uptime
   meminfo       - Show memory usage
 
-uROS> sched rr
+HeliOS> sched rr
 Scheduler: Round-Robin (quantum=5 ticks)
 
-uROS> run cpu
+HeliOS> run cpu
 Created CPU task with PID 0
 
-uROS> run io
+HeliOS> run io
 Created I/O task with PID 1
 
-uROS> ps
+HeliOS> ps
 PID  STATE     TICKS  BURST_EST  ARRIVAL
 0    RUNNING   23     20         10
 1    READY     8      15         15
 
-uROS> bench
+HeliOS> bench
 Running benchmark...
 Round 1: Round-Robin...
 RR done in 142 ticks
@@ -346,7 +346,7 @@ Wait (avg):       45        28 ticks
 Turnaround (avg): 68        48 ticks
 Throughput:       4.22      4.80 tasks/sec
 
-uROS> uptime
+HeliOS> uptime
 Uptime: 32.45 seconds (3245 ticks)
 ```
 
@@ -379,8 +379,8 @@ Tasks transition through these states:
 The codebase is organized as follows:
 
 ```
-uROS/
-├── include/uros.h       # Main header with types and prototypes
+HeliOS/
+├── include/helios.h       # Main header with types and prototypes
 ├── linker.ld            # Linker script
 ├── boot/start.S         # Boot assembly and context switch
 ├── kernel/

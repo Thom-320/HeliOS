@@ -1,4 +1,4 @@
-#include "uros.h"
+#include "helios.h"
 
 extern pcb_t *task_get_table(void);
 extern int task_get_max_tasks(void);
@@ -483,7 +483,7 @@ void shell_run(void) {
   while (1) {
     sched_maybe_yield_safe();
 
-    kprintf("uROS> ");
+    kprintf("HeliOS> ");
     uart_gets(buf, 64);
 
     // Trim newline

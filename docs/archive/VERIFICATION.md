@@ -1,8 +1,8 @@
-# uROS - Verificación del Sistema
+# HeliOS - Verificación del Sistema
 
 ## ✅ Estado del Proyecto
 
-El sistema uROS está **completamente funcional** y listo para demostración.
+El sistema HeliOS está **completamente funcional** y listo para demostración.
 
 ## Verificación Realizada
 
@@ -19,7 +19,7 @@ make run
 ✅ **Resultado**: 
 - Banner aparece una sola vez
 - Sistema se inicializa correctamente
-- Prompt `uROS>` aparece y está listo para recibir comandos
+- Prompt `HeliOS>` aparece y está listo para recibir comandos
 
 ### 3. Comandos Verificados
 
@@ -145,7 +145,7 @@ Sin embargo, el sistema actual es **estable y funcional** para demostración.
 
 ## Conclusión
 
-El proyecto uROS está en un estado **EXCELENTE** para demostración:
+El proyecto HeliOS está en un estado **EXCELENTE** para demostración:
 - ✅ Compila sin errores
 - ✅ Arranca correctamente
 - ✅ Shell interactiva funcional

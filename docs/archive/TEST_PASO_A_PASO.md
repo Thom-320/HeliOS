@@ -1,4 +1,4 @@
-# 🔍 DEBUG PASO A PASO - uROS Input Problem
+# 🔍 DEBUG PASO A PASO - HeliOS Input Problem
 
 ## 🎯 Objetivo
 
@@ -22,7 +22,7 @@ make run
 ### Qué Esperar
 
 ```
-=== uROS UART Test ===
+=== HeliOS UART Test ===
 Test 1: Echo simple
 Type characters (Ctrl+C to exit):
 
@@ -65,10 +65,10 @@ make run
 ### Qué Esperar
 
 ```
-=== uROS Shell Test ===
+=== HeliOS Shell Test ===
 Test 2: Simple shell (no timer, no scheduler)
 
-uROS-test>
+HeliOS-test>
 ```
 
 ### AHORA: Escribe Comandos
@@ -82,11 +82,11 @@ echo hola
 ### Resultado Esperado
 
 ```
-uROS-test> help
+HeliOS-test> help
 Commands: help, echo, test
-uROS-test> test
+HeliOS-test> test
 Test command works!
-uROS-test> echo hola
+HeliOS-test> echo hola
 You said: hola
 ```
 
@@ -171,7 +171,7 @@ make run
 
 **Verás:**
 ```
-=== uROS UART Test ===
+=== HeliOS UART Test ===
 Test 1: Echo simple
 Type characters (Ctrl+C to exit):
 
