@@ -154,6 +154,7 @@ static void consumer_task(void *arg) {
 
 static void cmd_help(void) {
   kprintf("Available commands:\n");
+  kprintf("  about           - Show HeliOS capabilities\n");
   kprintf("  help            - Show this help\n");
   kprintf("  ps              - List tasks\n");
   kprintf("  run cpu         - Create CPU-bound task\n");
@@ -168,6 +169,15 @@ static void cmd_help(void) {
   kprintf("  uptime          - Show system uptime\n");
   kprintf("  meminfo         - Show memory usage\n");
   kprintf("  intstats        - Show interrupt/timer status\n");
+}
+
+static void cmd_about(void) {
+  kprintf("HeliOS v1.0 - educational RISC-V operating system\n");
+  kprintf("Core: tasks, context switching, RR/SJF scheduling\n");
+  kprintf("Runtime: UART shell, SBI timer, traps, preemption toggle\n");
+  kprintf("Sync: semaphores, mutexes, producer-consumer demo\n");
+  kprintf("Memory: free-list allocator with coalescing\n");
+  kprintf("Verification: build + QEMU smoke test in CI\n");
 }
 
 static void cmd_ps(void) {
@@ -501,7 +511,9 @@ void shell_run(void) {
     }
 
     // Parse command
-    if (strcmp(buf, "help") == 0) {
+    if (strcmp(buf, "about") == 0) {
+      cmd_about();
+    } else if (strcmp(buf, "help") == 0) {
       cmd_help();
     } else if (strcmp(buf, "ps") == 0) {
       cmd_ps();

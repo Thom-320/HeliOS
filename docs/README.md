@@ -65,6 +65,7 @@ Once booted, the system presents an interactive shell prompt: `HeliOS>`
 ### Available Commands
 
 - **help** - Display list of available commands
+- **about** - Show a compact capability summary for demos
 - **ps** - List all tasks with PID, state, CPU ticks used, and burst estimate
 - **run cpu** - Create a CPU-bound task (burns CPU cycles)
 - **run io** - Create an I/O-bound task (simulates I/O with sleeps)

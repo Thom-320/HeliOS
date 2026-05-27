@@ -27,6 +27,7 @@ make run
 ### 3️⃣ Probar Comandos
 En el prompt `HeliOS>`, escribe:
 ```
+about
 help
 ps
 run cpu
@@ -51,6 +52,7 @@ intstats
 
 | Comando | Descripción |
 |---------|-------------|
+| `about` | Muestra capacidades de HeliOS |
 | `help` | Muestra ayuda |
 | `ps` | Lista tareas/procesos |
 | `run cpu` | Crea tarea CPU-bound |

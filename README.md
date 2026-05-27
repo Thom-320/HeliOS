@@ -7,6 +7,8 @@
 [![RISC-V](https://img.shields.io/badge/RISC--V-64-blue)](https://riscv.org/)
 [![QEMU](https://img.shields.io/badge/QEMU-virt-orange)](https://www.qemu.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Build](https://github.com/Thom-320/HeliOS/actions/workflows/build.yml/badge.svg)](https://github.com/Thom-320/HeliOS/actions/workflows/build.yml)
+[![Smoke Tested](https://img.shields.io/badge/QEMU-smoke%20tested-success)](scripts/smoke.sh)
 
 ## 🎯 Características
 
@@ -20,6 +22,18 @@
 - ✅ **Printf** implementado
 - ✅ **Gestión de memoria** con free-list allocator
 - ✅ **Smoke test en QEMU** para CI
+
+## 🏆 Por qué HeliOS destaca
+
+HeliOS no es solo una demo visual: implementa un kernel educativo completo y verificable. Frente a proyectos más llamativos pero monolíticos, HeliOS muestra más superficie real de sistemas operativos:
+
+- **Scheduling real**: Round-Robin, modo preemptivo/cooperativo y SJF.
+- **Concurrencia**: tareas, context switching, semáforos, mutexes y demo productor-consumidor.
+- **Timer/traps**: ticks SBI a 100 Hz, `uptime`, `intstats` y benchmark de scheduling.
+- **Memoria dinámica**: free-list allocator con coalescing, no solo bump allocation.
+- **Repo defendible**: CI compila el kernel y lo bootea en QEMU con un smoke test automatizado.
+
+Ver comparación técnica: [docs/COMPARISON.md](docs/COMPARISON.md).
 
 ## 🚀 Inicio Rápido
 
@@ -43,6 +57,7 @@ make clean && make -j
 make run
 
 # 3. En el prompt HeliOS>, prueba:
+about
 help
 ps
 run cpu
@@ -68,6 +83,7 @@ Ejecuta automáticamente: `help` → `ps` → `run cpu` → `run io` → `ps` �
 
 | Comando                 | Descripción                         |
 | ----------------------- | ----------------------------------- |
+| `about`                 | Muestra capacidades de HeliOS       |
 | `help`                  | Lista todos los comandos            |
 | `ps`                    | Muestra tareas activas              |
 | `run cpu`               | Crea tarea CPU-bound                |
@@ -118,6 +134,7 @@ make dtb        # Extrae device tree
 
 - **[README_RAPIDO.md](README_RAPIDO.md)** - Referencia rápida
 - **[docs/README.md](docs/README.md)** - Documentación técnica
+- **[docs/COMPARISON.md](docs/COMPARISON.md)** - Comparación técnica y ventajas
 - **[docs/visualization.html](docs/visualization.html)** - Visualización web
 
 ## 🎓 Ejemplo de Uso
@@ -137,6 +154,7 @@ System initialized, starting shell...
 
 HeliOS> help
 Available commands:
+  about         - Show HeliOS capabilities
   help          - Show this help
   ps            - List tasks
   run cpu       - Create CPU-bound task

@@ -25,6 +25,8 @@ trap cleanup EXIT
 set +e
 (
   sleep 2
+  printf 'about\n'
+  sleep 1
   printf 'help\n'
   sleep 1
   printf 'ps\n'
@@ -48,6 +50,7 @@ fi
 for expected in \
   "HeliOS v1.0" \
   "HeliOS> " \
+  "educational RISC-V operating system" \
   "Available commands:" \
   "PID  STATE" \
   "Uptime:" \

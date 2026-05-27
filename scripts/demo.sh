@@ -3,10 +3,12 @@
 # Ejecuta una secuencia de comandos para demostrar el sistema
 
 echo "=== HeliOS Demo Script ==="
-echo "Running commands: help, ps, run cpu, run io, ps, sched rr, meminfo"
+echo "Running commands: about, help, ps, run cpu, run io, ps, sched rr, meminfo"
 echo ""
 
 (
+  sleep 1
+  echo "about"
   sleep 1
   echo "help"
   sleep 1
