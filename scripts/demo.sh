@@ -1,6 +1,7 @@
 #!/bin/bash
-# HeliOS Demo Script
-# Ejecuta una secuencia de comandos para demostrar el sistema
+set -euo pipefail
+
+# HeliOS demo script: runs a short shell command sequence in QEMU.
 
 echo "=== HeliOS Demo Script ==="
 echo "Running commands: about, help, ps, run cpu, run io, ps, sched rr, meminfo"

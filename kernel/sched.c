@@ -198,8 +198,8 @@ void sched_update_burst_estimate(pcb_t *task) {
     return;
   }
 
-  // Exponential averaging: τ_new = α * real_burst + (1-α) * τ_old
-  // α = 0.5
+  // Exponential averaging: tau_new = alpha * real_burst +
+  // (1 - alpha) * tau_old, with alpha = 0.5.
   u64 real_burst = task->ticks_used;
   task->burst_estimate = (real_burst + task->burst_estimate) / 2;
 }

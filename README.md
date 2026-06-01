@@ -37,6 +37,25 @@ scheduling policy, synchronization, memory management, and repeatable runtime
 checks. The code is small enough to inspect, but complete enough to demonstrate
 real systems behavior.
 
+## For Systems Readers
+
+If you are reading this from an OSDev, RISC-V, embedded Linux, or xv6
+background, start with the runtime path rather than the shell:
+
+1. `linker.ld` fixes the kernel load address at `0x80200000`.
+2. `boot/start.S` sets the initial stack and implements the low-level context
+   switch.
+3. `kernel/kmain.c` initializes tasks, scheduling, traps, the timer, and the
+   shell task.
+4. `kernel/trap.c` handles supervisor timer interrupts and requests reschedule
+   points.
+5. `kernel/sched.c` and `kernel/task.c` implement the runnable task model,
+   Round-Robin/SJF selection, and context-switch handoff.
+6. `kernel/kmem.c` and `kernel/sync.c` keep the demo honest by adding dynamic
+   stack allocation, free-list reuse, semaphores, and mutexes.
+
+For a deeper map of the kernel, see [Architecture Notes](docs/architecture.md).
+
 ## Quickstart
 
 Install the required toolchain:
@@ -143,7 +162,7 @@ output from `about`, `help`, `ps`, `uptime`, `meminfo`, and `intstats`.
 
 ## Documentation
 
-- [Quick reference](README_RAPIDO.md)
+- [Architecture notes](docs/architecture.md)
 - [Technical documentation](docs/README.md)
 - [Web visualization](docs/visualization.html)
 

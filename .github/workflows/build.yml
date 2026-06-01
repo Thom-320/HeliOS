@@ -23,7 +23,7 @@ jobs:
             echo "Error: kernel.elf not generated"
             exit 1
           fi
-          echo "✅ Build successful!"
+          echo "Build successful."
 
       - name: Boot smoke test
         run: make smoke

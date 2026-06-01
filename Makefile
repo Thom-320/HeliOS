@@ -22,7 +22,7 @@ OBJ_S = $(patsubst %.S,build/%.o,$(SRC_S))
 OBJ = $(OBJ_C) $(OBJ_S)
 
 # Targets
-.PHONY: all run smoke clean dtb
+.PHONY: all run run-gdb gdb smoke clean dtb
 
 all: build/kernel.elf
 
@@ -40,6 +40,12 @@ build/%.o: %.S
 
 run: build/kernel.elf
 	@bash scripts/run-qemu.sh
+
+run-gdb: build/kernel.elf
+	@bash scripts/run-qemu.sh gdb
+
+gdb: build/kernel.elf
+	$(CROSS)gdb build/kernel.elf -ex "target remote :1234"
 
 smoke: build/kernel.elf
 	@bash scripts/smoke.sh

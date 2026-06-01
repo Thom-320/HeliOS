@@ -2,6 +2,8 @@
 
 A minimal operating system for RISC-V 64-bit architecture running on QEMU virt platform.
 
+For a file-by-file reader map, see [Architecture Notes](architecture.md).
+
 ## Features
 
 - **Platform**: QEMU virt, RISC-V 64 (rv64gc), S-mode bare metal
@@ -93,8 +95,8 @@ Once booted, the system presents an interactive shell prompt: `HeliOS>`
 
 - **Type**: Non-preemptive
 - **Selection**: Task with smallest estimated burst time runs to completion
-- **Estimation**: Exponential averaging with α=0.5
-  - τ_new = 0.5 × (actual_burst) + 0.5 × τ_old
+- **Estimation**: Exponential averaging with alpha=0.5
+  - tau_new = 0.5 * actual_burst + 0.5 * tau_old
 - **Tie-breaking**: Arrival time (FCFS), then PID
 - **Use Case**: Minimizes average wait time when burst times are known/predictable
 
@@ -107,10 +109,10 @@ The `bench` command runs two rounds of the same task set:
 **Metrics reported**:
 
 - **Wait time (avg)**: Average time tasks spend in ready queue before first execution
-  - Formula: Σ(start_time - arrival_time) / N
+  - Formula: sum(start_time - arrival_time) / N
   
 - **Turnaround time (avg)**: Average total time from arrival to completion
-  - Formula: Σ(finish_time - arrival_time) / N
+  - Formula: sum(finish_time - arrival_time) / N
   
 - **Throughput**: Tasks completed per second
   - Formula: N / total_duration
@@ -126,7 +128,7 @@ Counting semaphores with cooperative busy-wait implementation:
 ```c
 sem_t sem;
 sem_init(&sem, initial_count);  // Initialize with count
-sem_wait(&sem);                 // Decrement (wait if ≤0)
+sem_wait(&sem);                 // Decrement (wait if count <= 0)
 sem_post(&sem);                 // Increment
 ```
 
@@ -242,18 +244,18 @@ Fragmentation: moderate
 
 ### Features
 
-- ✅ **First-fit**: Fast allocation (O(n) where n = number of blocks)
-- ✅ **Splitting**: Minimizes waste for small allocations
-- ✅ **Coalescing**: Merges adjacent free blocks to prevent fragmentation
-- ✅ **Aligned**: All allocations aligned to 16 bytes
-- ✅ **Thread-safe**: Uses `disable_irq()`/`enable_irq()`
+- **First-fit**: Fast allocation (O(n) where n = number of blocks)
+- **Splitting**: Minimizes waste for small allocations
+- **Coalescing**: Merges adjacent free blocks to prevent fragmentation
+- **Aligned**: All allocations aligned to 16 bytes
+- **Thread-safe**: Uses `disable_irq()`/`enable_irq()`
 
 ### Limitations
 
-- ❌ **No best-fit or worst-fit**: Only first-fit implemented
-- ❌ **Linear search**: O(n) allocation time
-- ❌ **No compaction**: Fragmentation can occur over time
-- ❌ **Fixed heap size**: 256KB total
+- **No best-fit or worst-fit**: Only first-fit implemented
+- **Linear search**: O(n) allocation time
+- **No compaction**: Fragmentation can occur over time
+- **Fixed heap size**: 256KB total
 
 ### Use Cases
 
@@ -373,31 +375,28 @@ All general-purpose registers (x1-x31), `sstatus`, and `sepc` are saved/restored
 ### Task States
 
 Tasks transition through these states:
-- **NEW** → **READY** → **RUNNING** → **SLEEPING**/back to **READY** → **ZOMBIE**
+- **NEW** -> **READY** -> **RUNNING** -> **SLEEPING**/back to **READY** -> **ZOMBIE**
 
 ## Development
 
 The codebase is organized as follows:
 
-```
+```text
 HeliOS/
-├── include/helios.h       # Main header with types and prototypes
-├── linker.ld            # Linker script
-├── boot/start.S         # Boot assembly and context switch
-├── kernel/
-│   ├── kmain.c          # Kernel entry point
-│   ├── trap.c           # Trap/interrupt handling
-│   ├── task.c           # Task management and memory allocation
-│   ├── sched.c          # Scheduler (RR and SJF)
-│   └── shell.c          # Interactive shell
-├── drivers/
-│   ├── uart.c           # NS16550A UART driver
-│   └── timer.c          # SBI timer driver
-├── lib/
-│   └── printf.c         # Minimal printf and string utilities
-└── scripts/
-    ├── run-qemu.sh      # QEMU launch script
-    └── demo.sh          # Automated demo script
+  include/helios.h       Main header with types and prototypes
+  linker.ld              Linker script
+  boot/start.S           Boot assembly and context switch
+  kernel/kmain.c         Kernel entry point
+  kernel/trap.c          Trap/interrupt handling
+  kernel/task.c          Task management
+  kernel/kmem.c          Free-list allocator
+  kernel/sched.c         Scheduler (RR and SJF)
+  kernel/shell.c         Interactive shell
+  drivers/uart.c         NS16550A UART driver
+  drivers/timer.c        SBI timer driver
+  lib/printf.c           Minimal printf and string utilities
+  scripts/run-qemu.sh    QEMU launch script
+  scripts/demo.sh        Automated demo script
 ```
 
 ## Limitations
