@@ -1,8 +1,11 @@
-# HeliOS - Mini OS en RISC-V 64
+# HeliOS
 
-> Un sistema operativo educativo minimalista para RISC-V 64 corriendo en QEMU
->
-> El nombre combina **Helium Browser** + **OS**: **HeliOS**.
+HeliOS is a small educational operating-system kernel for RISC-V 64. It boots
+on QEMU, opens an interactive UART shell, schedules tasks, handles timer
+interrupts, and implements basic synchronization and heap allocation.
+
+The project is intentionally compact: the goal is to make core OS mechanisms
+visible without hiding them behind a large codebase.
 
 [![RISC-V](https://img.shields.io/badge/RISC--V-64-blue)](https://riscv.org/)
 [![QEMU](https://img.shields.io/badge/QEMU-virt-orange)](https://www.qemu.org/)
@@ -10,51 +13,52 @@
 [![Build](https://github.com/Thom-320/HeliOS/actions/workflows/build.yml/badge.svg)](https://github.com/Thom-320/HeliOS/actions/workflows/build.yml)
 [![Smoke Tested](https://img.shields.io/badge/QEMU-smoke%20tested-success)](scripts/smoke.sh)
 
-## 🎯 Características
+<p align="center">
+  <img src="docs/assets/qemu-smoke.svg" alt="HeliOS booted in QEMU with shell, scheduler, memory, and timer output" width="860">
+</p>
 
-- ✅ **Arquitectura RISC-V 64** (rv64gc)
-- ✅ **QEMU virt** con OpenSBI
-- ✅ **Shell interactiva** con 10+ comandos
-- ✅ **Sistema de tareas** con context switching
-- ✅ **Scheduler Round-Robin** cooperativo o preemptivo
-- ✅ **Scheduler SJF** con estimación de ráfagas
-- ✅ **Driver UART** NS16550A
-- ✅ **Printf** implementado
-- ✅ **Gestión de memoria** con free-list allocator
-- ✅ **Smoke test en QEMU** para CI
+## What It Implements
 
-## 🏆 Por qué HeliOS destaca
+- RISC-V 64 `rv64gc` kernel running on QEMU `virt` with OpenSBI.
+- Interactive UART shell with process, scheduler, memory, and timer commands.
+- Cooperative and preemptive Round-Robin scheduling.
+- Shortest Job First scheduling with burst estimates.
+- Task creation, context switching, and simple process inspection.
+- SBI timer interrupts at 100 Hz.
+- Semaphores, mutexes, and a producer-consumer demo.
+- Free-list heap allocator with block coalescing.
+- Automated QEMU smoke test for CI.
 
-HeliOS no es solo una demo visual: implementa un kernel educativo completo y verificable. Frente a proyectos más llamativos pero monolíticos, HeliOS muestra más superficie real de sistemas operativos:
+## Why It Matters
 
-- **Scheduling real**: Round-Robin, modo preemptivo/cooperativo y SJF.
-- **Concurrencia**: tareas, context switching, semáforos, mutexes y demo productor-consumidor.
-- **Timer/traps**: ticks SBI a 100 Hz, `uptime`, `intstats` y benchmark de scheduling.
-- **Memoria dinámica**: free-list allocator con coalescing, no solo bump allocation.
-- **Repo defendible**: CI compila el kernel y lo bootea en QEMU con un smoke test automatizado.
+HeliOS is not a toy shell wrapped around QEMU output. It exercises the pieces
+that make an operating-system kernel interesting: boot code, traps, task state,
+scheduling policy, synchronization, memory management, and repeatable runtime
+checks. The code is small enough to inspect, but complete enough to demonstrate
+real systems behavior.
 
-## 🚀 Inicio Rápido
+## Quickstart
 
-### Prerequisitos
+Install the required toolchain:
 
 ```bash
-# macOS (con Homebrew)
+# macOS
 brew install qemu riscv-gnu-toolchain
 
-# Linux (Ubuntu/Debian)
+# Ubuntu/Debian
 sudo apt-get install qemu-system-misc gcc-riscv64-unknown-elf
 ```
 
-### Compilar y Ejecutar
+Build and run:
 
 ```bash
-# 1. Compilar
 make clean && make -j
-
-# 2. Ejecutar
 make run
+```
 
-# 3. En el prompt HeliOS>, prueba:
+Try these commands at the `HeliOS>` prompt:
+
+```text
 about
 help
 ps
@@ -67,162 +71,82 @@ meminfo
 intstats
 ```
 
-**Para salir:** `Ctrl+C`
+Exit QEMU with `Ctrl+C`.
 
-## 🎬 Demo Automática
+## Automated Demo
 
 ```bash
 ./scripts/demo.sh
 ```
 
-Ejecuta automáticamente: `help` → `ps` → `run cpu` → `run io` → `ps` → `sched rr` → `meminfo`
+The demo sends a short command sequence to the shell: `about`, `help`, `ps`,
+`run cpu`, `run io`, `ps`, `sched rr`, and `meminfo`.
 
-## 📋 Comandos Disponibles
+## Shell Commands
 
-| Comando                 | Descripción                         |
-| ----------------------- | ----------------------------------- |
-| `about`                 | Muestra capacidades de HeliOS       |
-| `help`                  | Lista todos los comandos            |
-| `ps`                    | Muestra tareas activas              |
-| `run cpu`               | Crea tarea CPU-bound                |
-| `run io`                | Crea tarea I/O-bound                |
-| `kill <pid>`            | Termina una tarea                   |
-| `sched rr`              | Scheduler Round-Robin               |
-| `sched sjf`             | Scheduler Shortest Job First        |
-| `sched preempt on|off`  | Activa/desactiva preemption por timer |
-| `sleep <ticks>`         | Espera N ticks                      |
-| `pcdemo`                | Demo productor-consumidor           |
-| `bench`                 | Benchmark de scheduling             |
-| `uptime`                | Tiempo de ejecución                 |
-| `meminfo`               | Uso de memoria                      |
-| `intstats`              | Estado de timer/interrupciones      |
+| Command | Purpose |
+| --- | --- |
+| `about` | Show kernel capabilities |
+| `help` | List shell commands |
+| `ps` | List active tasks |
+| `run cpu` | Create a CPU-bound task |
+| `run io` | Create an I/O-bound task |
+| `kill <pid>` | Terminate a task |
+| `sched rr` | Switch to Round-Robin scheduling |
+| `sched sjf` | Switch to Shortest Job First scheduling |
+| `sched preempt on|off` | Enable or disable timer preemption |
+| `sleep <ticks>` | Sleep for a number of timer ticks |
+| `pcdemo` | Run the producer-consumer synchronization demo |
+| `bench` | Run a scheduler benchmark |
+| `uptime` | Show runtime in ticks and seconds |
+| `meminfo` | Show heap usage |
+| `intstats` | Show timer and interrupt state |
 
-## 📁 Estructura
+## Repository Layout
 
-```
-mini-os/
-├── boot/start.S          # Boot y context switch
-├── kernel/               # Core del kernel
-│   ├── kmain.c          # Punto de entrada
-│   ├── task.c           # Sistema de tareas
-│   ├── sched.c          # Scheduler RR
-│   ├── shell.c          # Shell interactiva
-│   └── trap.c           # Interrupciones
-├── drivers/             # Drivers de hardware
-│   ├── uart.c           # NS16550A
-│   └── timer.c          # Timer SBI
-├── lib/printf.c         # Printf
-├── include/helios.h       # Headers
-└── scripts/             # Scripts útiles
+```text
+boot/start.S          Boot entry and context switch
+kernel/               Kernel entrypoint, shell, scheduler, tasks, traps, heap
+drivers/              UART and SBI timer drivers
+lib/printf.c          Minimal formatted output
+include/helios.h      Shared kernel declarations
+scripts/              QEMU, demo, and smoke-test helpers
+docs/                 Technical notes and visualization
 ```
 
-## 🔧 Targets del Makefile
+## Make Targets
 
 ```bash
-make            # Compila el proyecto
-make run        # Ejecuta en QEMU
-make run-gdb    # Ejecuta con debugger
-make gdb        # Conecta GDB
-make smoke      # Compila y ejecuta smoke test en QEMU
-make clean      # Limpia build/
-make dtb        # Extrae device tree
+make            # Build the kernel
+make run        # Run in QEMU
+make run-gdb    # Run QEMU with a GDB server
+make gdb        # Connect GDB
+make smoke      # Build and run the QEMU smoke test
+make clean      # Remove build artifacts
+make dtb        # Extract the QEMU device tree
 ```
 
-## 📖 Documentación
-
-- **[README_RAPIDO.md](README_RAPIDO.md)** - Referencia rápida
-- **[docs/README.md](docs/README.md)** - Documentación técnica
-- **[docs/visualization.html](docs/visualization.html)** - Visualización web
-
-## 🎓 Ejemplo de Uso
-
-```
-$ make run
-
-OpenSBI v1.5.1
-[Boot info...]
-
-HeliOS (rv64gc, QEMU virt) - console ready
-ticks=0
-Initializing task system...
-Initializing scheduler...
-Creating idle task...
-System initialized, starting shell...
-
-HeliOS> help
-Available commands:
-  about         - Show HeliOS capabilities
-  help          - Show this help
-  ps            - List tasks
-  run cpu       - Create CPU-bound task
-  ...
-
-HeliOS> ps
-PID  STATE     TICKS  BURST_EST  ARRIVAL
-0    READY    0      1          0
-
-HeliOS> run cpu
-Created CPU task with PID 1
-
-HeliOS> ps
-PID  STATE     TICKS  BURST_EST  ARRIVAL
-0    READY    0      1          0
-1    READY    0      20          0
-```
-
-## 🐛 Debugging
+## Verification
 
 ```bash
-# Terminal 1
-make run-gdb
-
-# Terminal 2
-make gdb
-(gdb) break kmain
-(gdb) continue
-(gdb) info registers
+make smoke
 ```
 
-## ⚙️ Arquitectura
+The smoke test boots the kernel, drives the shell, and checks for expected
+output from `about`, `help`, `ps`, `uptime`, `meminfo`, and `intstats`.
 
-- **Base Address**: 0x80200000
-- **Boot**: OpenSBI (-bios default)
-- **Mode**: S-mode bare metal
-- **UART**: 0x10000000 (NS16550A)
-- **Scheduler**: Round-Robin cooperativo/preemptivo y SJF
-- **Memory**: Free-list allocator con coalescing, 256KB heap
-- **Tasks**: Max 32, 8KB stack cada una
+## Current Limits
 
-## ✅ Estado del Proyecto
+- No MMU: memory is physical and direct.
+- No filesystem: runtime state lives in memory.
+- Single supervisor-mode environment: no strict user/kernel separation.
 
-**Completamente funcional:**
+## Documentation
 
-- ✅ Boot y shell interactiva
-- ✅ Sistema de tareas con context switching
-- ✅ Scheduler Round-Robin Preemptivo (con Timer)
-- ✅ Scheduler SJF (Shortest Job First)
-- ✅ Todos los comandos básicos + `bench`
-- ✅ UART input/output
-- ✅ Gestión de memoria
-- ✅ Visualización Web (ver `docs/visualization.html`)
-- ✅ Smoke test automatizado en QEMU
+- [Quick reference](README_RAPIDO.md)
+- [Technical documentation](docs/README.md)
+- [Web visualization](docs/visualization.html)
 
-**Limitaciones actuales (por diseño):**
+## License
 
-- Sin MMU (memoria física directa)
-- Sin sistema de archivos (todo en RAM)
-- Modo Supervisor único (sin separación User/Kernel estricta)
-
-## 👤 Autor
-
-- **Thomas** 
-
-## 📝 Licencia
-
-MIT License - ver archivo LICENSE
-
----
-
-**🚀 ¡Listo para demostración y evaluación!**
-
-Para más detalles, consulta [docs/README.md](docs/README.md)
+MIT. See [LICENSE](LICENSE).

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="690" viewBox="0 0 1120 690" role="img" aria-labelledby="title desc">
+  <title id="title">HeliOS QEMU smoke test terminal</title>
+  <desc id="desc">Terminal capture showing HeliOS booted in QEMU, shell commands, scheduler state, memory usage, and timer interrupts.</desc>
+  <rect width="1120" height="690" rx="18" fill="#0b1020"/>
+  <rect x="22" y="22" width="1076" height="646" rx="14" fill="#111827" stroke="#334155" stroke-width="2"/>
+  <circle cx="58" cy="54" r="8" fill="#ef4444"/>
+  <circle cx="86" cy="54" r="8" fill="#f59e0b"/>
+  <circle cx="114" cy="54" r="8" fill="#22c55e"/>
+  <text x="560" y="60" fill="#94a3b8" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" text-anchor="middle">QEMU virt - HeliOS rv64</text>
+  <g font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="21" fill="#dbeafe">
+    <text x="58" y="110">_   _      _ _  ___  ____</text>
+    <text x="58" y="138">| | | | ___| (_)/ _ \/ ___|</text>
+    <text x="58" y="166">| |_| |/ _ \ | | | | \___ \</text>
+    <text x="58" y="194">|  _  |  __/ | | |_| |___) |</text>
+    <text x="58" y="222">|_| |_|\___|_|_|\___/|____/</text>
+  </g>
+  <g font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="19" fill="#e5e7eb">
+    <text x="58" y="270" fill="#67e8f9">HeliOS v1.0 - RISC-V 64-bit</text>
+    <text x="58" y="302">Initializing task system... scheduler... timer...</text>
+    <text x="58" y="334" fill="#facc15">HeliOS&gt; about</text>
+    <text x="58" y="366">educational RISC-V operating system</text>
+    <text x="58" y="398">Core: tasks, context switching, RR/SJF scheduling</text>
+    <text x="58" y="430">Runtime: UART shell, SBI timer, traps, preemption toggle</text>
+    <text x="58" y="462" fill="#facc15">HeliOS&gt; ps</text>
+    <text x="58" y="494">PID  STATE     TICKS  BURST_EST  ARRIVAL</text>
+    <text x="58" y="526">0    READY     0      10000      0</text>
+    <text x="58" y="558">1    RUNNING   0      1000       0</text>
+    <text x="58" y="590" fill="#facc15">HeliOS&gt; meminfo</text>
+    <text x="58" y="622">Heap used: 16384 bytes (6%)  |  preempt=OFF  |  ticks=573</text>
+  </g>
+</svg>
