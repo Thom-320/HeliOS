@@ -7,6 +7,16 @@ interrupts, and implements basic synchronization and heap allocation.
 The project is intentionally compact: the goal is to make core OS mechanisms
 visible without hiding them behind a large codebase.
 
+**Context:** collaborative educational systems project. Thomas Chisica is a
+contributor, not the sole author of every component. This repository demonstrates
+kernel mechanisms and their runtime checks, not a production operating system.
+
+## Read in five minutes
+
+1. Follow the boot-to-scheduler path in the [architecture notes](docs/architecture.md).
+2. Inspect the [QEMU smoke script](scripts/smoke.sh) and its expected shell output.
+3. Use `make smoke` after installing the toolchain below; review the current limits before reusing the kernel.
+
 [![RISC-V](https://img.shields.io/badge/RISC--V-64-blue)](https://riscv.org/)
 [![QEMU](https://img.shields.io/badge/QEMU-virt-orange)](https://www.qemu.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -31,11 +41,9 @@ visible without hiding them behind a large codebase.
 
 ## Why It Matters
 
-HeliOS is not a toy shell wrapped around QEMU output. It exercises the pieces
-that make an operating-system kernel interesting: boot code, traps, task state,
-scheduling policy, synchronization, memory management, and repeatable runtime
-checks. The code is small enough to inspect, but complete enough to demonstrate
-real systems behavior.
+The code connects boot, traps, task state, scheduling, synchronization and
+memory management in a compact implementation. Its educational value is that
+these paths can be inspected together and exercised by repeatable runtime checks.
 
 ## For Systems Readers
 
