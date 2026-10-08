@@ -26,7 +26,6 @@ work. Smoke tests are not formal verification or a production reliability claim.
 [![QEMU](https://img.shields.io/badge/QEMU-virt-orange)](https://www.qemu.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Build](https://github.com/Thom-320/HeliOS/actions/workflows/build.yml/badge.svg)](https://github.com/Thom-320/HeliOS/actions/workflows/build.yml)
-[![Smoke Tested](https://img.shields.io/badge/QEMU-smoke%20tested-success)](scripts/smoke.sh)
 
 <p align="center">
   <img src="docs/assets/qemu-smoke.svg" alt="HeliOS booted in QEMU with shell, scheduler, memory, and timer output" width="860">
