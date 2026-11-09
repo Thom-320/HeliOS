@@ -17,7 +17,8 @@ kernel mechanisms and their runtime checks, not a production operating system.
 2. Read the [QEMU smoke script](scripts/smoke.sh) and its expected shell output.
 3. Run `make smoke` after installing the toolchain below, and read the current limits before reusing the kernel.
 
-The smoke tests check that each mechanism runs on QEMU; they are not formal verification.
+The smoke test boots the kernel and checks the output of six shell commands. It does
+not exercise SJF, the synchronization demo or heap reuse, and it is not formal verification.
 
 [![RISC-V](https://img.shields.io/badge/RISC--V-64-blue)](https://riscv.org/)
 [![QEMU](https://img.shields.io/badge/QEMU-virt-orange)](https://www.qemu.org/)
