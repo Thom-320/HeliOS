@@ -11,16 +11,13 @@ visible without hiding them behind a large codebase.
 contributor, not the sole author of every component. This repository demonstrates
 kernel mechanisms and their runtime checks, not a production operating system.
 
-## Read in five minutes
-
-**Research-software perspective:** this repository shows how interfaces between
-boot, scheduling, interrupts and memory can be made inspectable and exercised
-with runtime checks. It complements the ML projects with collaborative C systems
-work. Smoke tests are not formal verification or a production reliability claim.
+## Where to start
 
 1. Follow the boot-to-scheduler path in the [architecture notes](docs/architecture.md).
-2. Inspect the [QEMU smoke script](scripts/smoke.sh) and its expected shell output.
-3. Use `make smoke` after installing the toolchain below; review the current limits before reusing the kernel.
+2. Read the [QEMU smoke script](scripts/smoke.sh) and its expected shell output.
+3. Run `make smoke` after installing the toolchain below, and read the current limits before reusing the kernel.
+
+The smoke tests check that each mechanism runs on QEMU; they are not formal verification.
 
 [![RISC-V](https://img.shields.io/badge/RISC--V-64-blue)](https://riscv.org/)
 [![QEMU](https://img.shields.io/badge/QEMU-virt-orange)](https://www.qemu.org/)
